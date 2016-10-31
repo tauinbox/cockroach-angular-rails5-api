@@ -1,2 +1,2 @@
 # cockroach-camp (sandbox project)
-https://cockroach-camp.herokuapp.com
+rails5-api + angularjs
