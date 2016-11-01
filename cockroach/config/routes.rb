@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/members_only'
+
   get 'home/index'
 
   root to: "home#index"
