@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('HeaderController', ['$scope', 'authService', 'ngDialog', function($scope, authService, ngDialog) {
+  .controller('HeaderController', ['$scope', 'ngDialog', function($scope, ngDialog) {
     var headCtrl = this;
 
     headCtrl.openLogin = function() {

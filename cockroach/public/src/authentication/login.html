@@ -6,9 +6,13 @@
         <div class="">
             <form ng-submit="loginCtrl.doLogin()">
                 <div class="form-group">
-                    <label class="sr-only" for="username">Username</label>
-                    <input type="text" class="form-control input-sm" id="username" placeholder="Username" ng-model="loginCtrl.loginData.username">
+                    <label class="sr-only" for="nickname">Nickname</label>
+                    <input type="text" class="form-control input-sm" id="nickname" placeholder="Nickname" ng-model="loginCtrl.loginData.nickname">
                 </div>
+                <div class="form-group">
+                    <label class="sr-only" for="email">Email</label>
+                    <input type="text" class="form-control input-sm" id="email" placeholder="Nickname" ng-model="loginCtrl.loginData.email">
+                </div>                
                 <div class="form-group">
                     <label class="sr-only" for="password">Password</label>
                     <input type="password" class="form-control input-sm" id="password" placeholder="Password" ng-model="loginCtrl.loginData.password">

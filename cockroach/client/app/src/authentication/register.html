@@ -4,22 +4,22 @@
         </div>
         <div class="">&nbsp;</div>
         <div class="">
-            <form ng-submit="loginCtrl.doRegister()">
+            <form ng-submit="regCtrl.doRegister()">
                 <div class="form-group">
-                    <label class="sr-only" for="username">Username</label>
-                    <input type="text" class="form-control input-sm" id="username" placeholder="Username" ng-model="regCtrl.registration.username">
+                    <label class="sr-only" for="username">Nickname</label>
+                    <input type="text" class="form-control input-sm" id="username" placeholder="Nickname" ng-model="regCtrl.registration.nickname">
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="password">Password</label>
                     <input type="password" class="form-control input-sm" id="password" placeholder="Password" ng-model="regCtrl.registration.password">
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="firstname">First Name</label>
-                    <input type="text" class="form-control input-sm" id="firstname" placeholder="First Name" ng-model="regCtrl.registration.firstname">
+                    <label class="sr-only" for="firstname">Full Name</label>
+                    <input type="text" class="form-control input-sm" id="firstname" placeholder="Full Name" ng-model="regCtrl.registration.name">
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="lastname">Last Name</label>
-                    <input type="text" class="form-control input-sm" id="lastname" placeholder="Last Name" ng-model="regCtrl.registration.lastname">
+                    <label class="sr-only" for="lastname">Email</label>
+                    <input type="email" class="form-control input-sm" id="lastname" placeholder="Email" ng-model="regCtrl.registration.email">
                 </div>
                 <div class="checkbox">
                     <label>

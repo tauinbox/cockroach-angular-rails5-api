@@ -26,12 +26,12 @@ gulp.task('jshint', function() {
 
 gulp.task('usemin', ['jshint'], function () {
   return gulp.src('./app/**/*.html')
-      .pipe(usemin({
-        css:[minifycss(),rev()],
-        js: [ngannotate(),uglify(),rev()]
-      }))
-      // .pipe(replace('http://localhost:3000/', 'http://iwillgo.mybluemix.net/')) // Replace baseURL from local to production
-      .pipe(gulp.dest('../public/'));
+    .pipe(usemin({
+      css:[minifycss(),rev()],
+      js: [ngannotate(),uglify(),rev()]
+    }))
+    // .pipe(replace('http://localhost:3000/', 'http://iwillgo.mybluemix.net/')) // Replace baseURL from local to production
+    .pipe(gulp.dest('../public/'));
 });
 
 
@@ -45,14 +45,15 @@ gulp.task('imagemin', function() {
 
 // Clean
 gulp.task('clean', function() {
-    return del(['dist']);
+  return del(['../public/src'], {force: true})
+  .then(del(['../public/styles'], {force: true}));
 });
 
 gulp.task('copyfonts', ['clean'], function() {
-   gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
-   .pipe(gulp.dest('../public/fonts'));
-   gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
-   .pipe(gulp.dest('../public/fonts'));
+  gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
+  .pipe(gulp.dest('../public/fonts'));
+  gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
+  .pipe(gulp.dest('../public/fonts'));
 });
 
 // Watch
