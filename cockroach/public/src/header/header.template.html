@@ -32,19 +32,19 @@
           </li>
           <hr class="visible-xs">
           <li ng-if="loggedIn">
-            <a href="#" ng-click="logOut()">
+            <a href="#" ng-click="headCtrl.logOut()">
               <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
             </a>
           </li>
 
           <li ng-if="!loggedIn">
-            <a href="#" ng-click="openLogin()">
+            <a href="#" ng-click="headCtrl.openLogin()">
               <i class="fa fa-sign-in" aria-hidden="true"></i> Log in
             </a>
           </li>
           <hr class="visible-xs">
           <li ng-if="!loggedIn">
-            <a href="#" ng-click="openRegister()">
+            <a href="#" ng-click="headCtrl.openRegister()">
               <i class="fa fa-user-plus" aria-hidden="true"></i> Register
             </a>
           </li>          

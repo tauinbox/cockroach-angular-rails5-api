@@ -2,9 +2,8 @@
 
   'use strict';
 
-  angular.module('iwgApp')
-
-  .factory('authService', ['$resource', '$http', '$rootScope', 'baseURL', 'ngDialog', function($resource, $http, $rootScope, baseURL, ngDialog){
+  angular.module('cockroach')
+  .service('authService', ['$resource', '$http', '$rootScope', 'baseURL', 'ngDialog', function($resource, $http, $rootScope, baseURL, ngDialog){
       
     var authSvc = this;
     var isAuthenticated = false;

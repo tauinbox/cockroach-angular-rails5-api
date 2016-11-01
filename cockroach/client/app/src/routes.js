@@ -12,12 +12,14 @@
       url: '/home',
         views: {
           'header': {
-            templateUrl : 'src/header/header.template.html',
-            controller  : 'HeaderController'
+            templateUrl:  'src/header/header.template.html',
+            controller:   'HeaderController',
+            controllerAs: 'headCtrl'
           },
           'content': {
-            templateUrl : 'src/home/home.template.html',
-            controller  : 'HomeController'
+            templateUrl:  'src/home/home.template.html',
+            controller:   'HomeController',
+            controllerAs: 'homeCtrl'
           },
           'footer': {
             templateUrl : 'src/footer/footer.template.html'

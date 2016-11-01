@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('LoginController', ['ngDialog', 'authService', function(ngDialog, authService) {
+  .controller('LoginController', ['$scope', 'ngDialog', 'authService', function($scope, ngDialog, authService) {
 
     var loginCtrl = this;
       
@@ -13,7 +13,7 @@
     };
             
     loginCtrl.openRegister = function () {
-      ngDialog.open({ template: 'views/register.html', scope: loginCtrl, className: 'ngdialog-theme-default', controller: "RegisterController" });
+      ngDialog.open({ template: 'src/authentication/register.html', scope: $scope, className: 'ngdialog-theme-default', controller: "RegisterController as regCtrl" });
     };
       
   }]);
