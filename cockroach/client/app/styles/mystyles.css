@@ -1,0 +1,246 @@
+
+#cockroach-logo {
+  background-image: url('/images/cockroach-logo.png');
+  background-size: 100%;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+body {
+  background-color: #006699;
+  margin-top: 100px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: white;
+}
+
+/*HEADER*/
+
+#navbar {
+  padding-bottom: 5px;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+  background-image: none;
+  background-color: #006699;
+  border-color: white;
+}
+
+.jumbotron {
+  padding: 0px;
+}
+
+#jumbo {
+  width: 100%;
+}
+
+.nav.navbar-nav.navbar-right li a {
+  color: white;
+  font-size: 1.5em;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+  color: #5ac9ff;
+  background-color: #004363;
+  border-radius: 5px;
+}
+
+#navlist {
+  margin-top: 25px;
+}
+
+.navbar-header .navbar-brand a {
+  color: white;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 2px #000;
+}
+
+div.navbar-brand a h1{
+  margin: 15px;
+}
+
+div.navbar-brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+ul#navlist {
+  margin-top: 12px;
+}
+
+.navbar-header .navbar-brand a:hover {
+  color: #5ac9ff;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+/*MODALS*/
+
+.modal-body label {
+  margin-top: 5px;
+}
+
+.modal-header {
+  background-color: #5ac9ff;
+}
+
+div.modal-body > a:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #006699;
+  font-weight: bold
+}
+
+/*NOTIFIERS*/
+
+#custom_error_explanation ul {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-left: 20px
+}
+
+#custom_error_explanation p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.alert {
+  text-align: center;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/*FORMS*/
+
+#login-form > a:hover, #register-form > a:hover {
+  text-decoration: none;
+  background-color: #F5F5F5;
+  color: #006699;
+  font-weight: bold
+}
+
+/*FOOTER*/
+
+#footer {
+  background-color: #006699;
+  color: #FFF1D5;
+}
+
+#footer p {
+  margin: 10px;
+}
+
+#footer hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#social a {
+  font-size: 3em;
+  color: white;
+}
+
+#linkedin:hover {
+  color: #FFFFFF;
+  background-color: #1F89BE;
+}
+
+#github:hover {
+  color: black;
+  background-color: #F5F5F5;
+}
+
+/*ARTICLES*/
+
+.articles h1, .article h1, .new-edit h1, .profile h1 {
+  color: #5ac9ff;
+  margin-top: 0px;
+}
+
+.article h3 {
+  color: #006699;
+}
+
+.article h3 {
+  margin-top: 10px;
+}
+
+div.button-wrapper {
+  text-align: center;
+}
+
+div.article {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+/*.article div.panel.panel-primary {
+  margin-bottom: 0px;
+}*/
+
+/*RESPONSIVE DESIGN*/
+
+@media (max-width: 1199px) {
+  .nav.navbar-nav.navbar-right li a { /*MENU FONT SIZE*/
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav.navbar-nav.navbar-right li a { /*MENU FONT SIZE*/
+    font-size: 1em;
+  }
+  #cockroach-logo {
+    display: none;
+  }
+  div.navbar-brand a h1{ /*BRAND NAME FONT SIZE*/
+    margin-top: 10px;
+    margin-left: 0px;
+    font-size: 1.2em;
+  }
+  ul#navlist {
+    margin-top: 5px;
+  }
+  body {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  #navbar ul {
+    margin: 0px;
+  }  
+  #navbar li {
+    text-align: center;
+  }
+  #navbar ul hr {
+    margin: 0px;
+  }
+  div.navbar-brand a h1{
+    margin-top: 5px;
+  }
+  body {
+    margin-top: 70px;
+  }    
+}
+
+@media (max-width: 443px) {
+  div.navbar-brand {
+    height: 50px;
+  }
+  div.navbar-brand a h1{ /*BRAND NAME FONT SIZE*/
+    margin-top: 10px;
+    font-size: .9em;
+  }
+  #linkedin, #github {
+    display: none;
+  }
+  body {
+    margin-top: 65px;
+  }     
+}

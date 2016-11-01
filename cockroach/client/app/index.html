@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     
-  <title>Cockroach Camp</title>    
+  <title>Cockroach Camp</title>
 
+  <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="cockroach.ico" type="image/x-icon" />
   <!-- build:css styles/main.css -->
   <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +24,13 @@
 
 <body>
     
-  <ui-view></ui-view>
+  <div ui-view="header"></div>
+
+  <div ui-view="content"></div>
+
+  <div ui-view="footer"></div>
   
-<!-- build:js scripts/main.js -->
+<!-- build:js src/main.js -->
 
   <!-- libs -->
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -36,15 +41,15 @@
   <script src="../bower_components/ng-dialog/js/ngDialog.min.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-  <!-- module -->
-  <script src="scripts/cockroach.module.js"></script>
+  <!-- modules -->
+  <script src="src/cockroach.module.js"></script>
 
   <!-- routes -->
-  <script src="scripts/routes.js"></script>
+  <script src="src/routes.js"></script>
 
   <!-- controllers -->
-  
-
+  <script src="src/header/header.controller.js"></script>
+  <script src="src/home/home.controller.js"></script>
   <!-- services -->
 
 
