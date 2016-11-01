@@ -11,7 +11,7 @@
       $auth.submitLogin(loginCtrl.loginData)
       .then(function(resp) {
           // handle success response
-          console.log(resp);
+          // console.log(resp);
         })
         .catch(function(err) {
           // handle error response
