@@ -42,7 +42,7 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 install NodeJs nodejs
 install NPM npm
 npm install bower -g
-# npm install gulp -g
+npm install gulp -g
 
 ##########################################
 # temporarily comment this section
