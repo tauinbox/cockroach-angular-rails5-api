@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
-  
+
   def members_only
     render json: {
       data: {
@@ -9,4 +9,5 @@ class UserController < ApplicationController
       }
     }, status: 200
   end
+
 end

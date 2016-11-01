@@ -3,15 +3,12 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('LoginController', ['ngDialog', '$localStorage', 'authFactory', function(ngDialog, $localStorage, authFactory) {
+  .controller('LoginController', ['ngDialog', 'authService', function(ngDialog, authService) {
 
     var loginCtrl = this;
       
-    loginCtrl.loginData = $localStorage.getObject('userinfo','{}');
-
     loginCtrl.doLogin = function() {
-      if (loginCtrl.rememberMe) $localStorage.storeObject('userinfo', loginCtrl.loginData);
-      authFactory.login(loginCtrl.loginData);
+      authService.login(loginCtrl.loginData);
       ngDialog.close();
     };
             

@@ -11,7 +11,7 @@
 
     authSvc.login = function(loginData) {
         
-      $resource(baseURL + "users/sign_in")
+      $resource(baseURL + "auth/sign_in")
         .save(loginData,
           function(response) {
             // console.log(response);
@@ -36,13 +36,12 @@
       };
       
       authSvc.logout = function() {
-        $resource(baseURL + "users/sign_out").get(function(response) {});
-        destroyUserCredentials();
+        $resource(baseURL + "auth/sign_out").get(function(response) {});
       };
       
       authSvc.register = function(registerData) {
           
-        $resource(baseURL + "users")
+        $resource(baseURL + "auth")
         .save(registerData,
           function(response) {
             $rootScope.$broadcast('registration:Successful');

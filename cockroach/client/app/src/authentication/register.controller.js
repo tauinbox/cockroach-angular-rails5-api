@@ -3,16 +3,13 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('RegisterController', ['ngDialog', '$localStorage', 'authFactory', function(ngDialog, $localStorage, authFactory) {
+  .controller('RegisterController', ['ngDialog', 'authService', function(ngDialog, authService) {
 
     var regCtrl = this;
       
-    regCtrl.register={};
-    regCtrl.loginData={};
-
     regCtrl.doRegister = function() {
       // console.log('Doing registration', regCtrl.registration);
-      authFactory.register(regCtrl.registration);
+      authService.register(regCtrl.registration);
       ngDialog.close();
     };
 
