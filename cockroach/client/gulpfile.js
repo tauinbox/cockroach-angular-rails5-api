@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     replace = require('gulp-replace'),
     changed = require('gulp-changed'),
     rev = require('gulp-rev'),
-    browserSync = require('browser-sync'),
+    // browserSync = require('browser-sync'),
     ngannotate = require('gulp-ng-annotate'),
     del = require('del');
 
@@ -66,26 +66,26 @@ gulp.task('watch', ['browser-sync'], function() {
 
 });
 
-gulp.task('browser-sync', ['default'], function () {
-   var files = [
-      'app/**/*.html',
-      'app/styles/**/*.css',
-      'app/images/**/*.png',
-      'app/src/**/*.js',
-      '../public/**/*'
-   ];
+// gulp.task('browser-sync', ['default'], function () {
+//    var files = [
+//       'app/**/*.html',
+//       'app/styles/**/*.css',
+//       'app/images/**/*.png',
+//       'app/src/**/*.js',
+//       '../public/**/*'
+//    ];
 
-   browserSync.init(files, {
-      server: {
-         baseDir: "dist",
-         index: "index.html"
-      }
-   });  
+//    browserSync.init(files, {
+//       server: {
+//          baseDir: "dist",
+//          index: "index.html"
+//       }
+//    });  
     
-  // Watch any files in ../public/, reload on change
-  gulp.watch(['../public/**']).on('change', browserSync.reload);
+//   // Watch any files in ../public/, reload on change
+//   gulp.watch(['../public/**']).on('change', browserSync.reload);
     
-});
+// });
 
 // Default task
 gulp.task('default', ['clean'], function() {

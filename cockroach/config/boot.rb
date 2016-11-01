@@ -2,12 +2,13 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
 
 require 'bundler/setup' # Set up gems listed in the Gemfile.
 
+# Change default binding host to 0.0.0.0
 require 'rails/commands/server'
-
 module Rails
   class Server
+    alias :default_options_bk :default_options
     def default_options
-      super.merge(Host: '0.0.0.0', Port: 3000)
+      default_options_bk.merge!(Host: '0.0.0.0')
     end
   end
 end
