@@ -19,7 +19,6 @@
         closeByEscape: false 
       });
 
-      $scope.activeMenu = menuItems.activeMenu;
     };
 
     headCtrl.openRegister = function () {
@@ -32,7 +31,6 @@
         closeByEscape: false
       });
 
-      $scope.activeMenu = menuItems.activeMenu;
     };
 
     headCtrl.logOut = function() {
@@ -41,6 +39,9 @@
         // handle success response
         headCtrl.loggedIn = false;
         console.log("Successfully signed out");
+
+        // switch to home menu item after logging out
+        menuItems.setActive('home');
       })
       .catch(function(resp) {
         // handle error response
