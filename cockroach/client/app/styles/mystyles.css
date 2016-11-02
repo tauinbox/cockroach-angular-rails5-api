@@ -40,6 +40,10 @@ body {
   font-size: 1.5em;
 }
 
+.nav.navbar-nav.navbar-right li a:focus {
+  outline: none;
+}
+
 .nav.navbar-nav.navbar-right li a:hover {
   color: #5ac9ff;
   background-color: #004363;
