@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('LoginController', ['$scope', '$auth', 'ngDialog', function($scope, $auth, ngDialog) {
+  .controller('LoginController', ['$auth', 'ngDialog', 'menuItems', function($auth, ngDialog, menuItems) {
 
     var loginCtrl = this;
       
@@ -17,13 +17,16 @@
           // handle error response
           console.log(err);
         });
-        
+
       ngDialog.close();
+      menuItems.setActive(menuItems.previousItem);
+    };
+
+    // switch to previously chosen menu item
+    loginCtrl.switchMenuItem = function() {
+      // console.log("switch to", menuItems.previousItem);
+      menuItems.setActive(menuItems.previousItem);
     };
             
-    loginCtrl.openRegister = function () {
-      ngDialog.open({ template: 'src/authentication/register.html', scope: $scope, className: 'ngdialog-theme-default', controller: "RegisterController as regCtrl" });
-    };
-      
   }]);
 })();  

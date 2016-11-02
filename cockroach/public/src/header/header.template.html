@@ -20,34 +20,46 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right" id="navlist">
-        <li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-        <hr class="visible-xs">
-        <li><a href="#about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+        <li ng-class="{active : headCtrl.activeMenu === 'home'}">
+          <a ui-sref="home" ng-click="headCtrl.setActive('home')">
+            <i class="fa fa-home" aria-hidden="true"></i> Home
+          </a>
+        </li>
         <hr class="visible-xs">
 
-          <li ng-if="headCtrl.loggedIn">
-            <a href="#profile">
-              <i class="fa fa-user" aria-hidden="true"></i> Profile
-            </a>
-          </li>
-          <hr class="visible-xs">
-          <li ng-if="headCtrl.loggedIn">
-            <a href="#" ng-click="headCtrl.logOut()">
-              <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
-            </a>
-          </li>
+        <li ng-class="{active : headCtrl.activeMenu === 'about'}">
+          <a href="#about" ng-click="headCtrl.setActive('about')">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> About
+          </a>
+        </li>
+        <hr class="visible-xs">
 
-          <li ng-if="!headCtrl.loggedIn">
-            <a href="#" ng-click="headCtrl.openLogin()">
-              <i class="fa fa-sign-in" aria-hidden="true"></i> Log in
-            </a>
-          </li>
-          <hr class="visible-xs">
-          <li ng-if="!headCtrl.loggedIn">
-            <a href="#" ng-click="headCtrl.openRegister()">
-              <i class="fa fa-user-plus" aria-hidden="true"></i> Register
-            </a>
-          </li>          
+        <li ng-if="headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'profile'}">
+          <a href="#profile" ng-click="headCtrl.setActive('profile')">
+            <i class="fa fa-user" aria-hidden="true"></i> Profile
+          </a>
+        </li>
+        <hr class="visible-xs">
+
+        <li ng-if="headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'logout'}">
+          <a href="#" ng-click="headCtrl.setActive('logout'); headCtrl.logOut()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+          </a>
+        </li>
+        <hr class="visible-xs">
+
+        <li ng-if="!headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'login'}">
+          <a href="#" ng-click="headCtrl.setActive('login'); headCtrl.openLogin()">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Log in
+          </a>
+        </li>
+        <hr class="visible-xs">
+
+        <li ng-if="!headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'register'}">
+          <a href="#" ng-click="headCtrl.setActive('register'); headCtrl.openRegister()">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Register
+          </a>
+        </li>          
 
       </ul>
     </div>
