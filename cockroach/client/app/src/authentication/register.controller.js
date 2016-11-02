@@ -9,7 +9,16 @@
       
     regCtrl.doRegister = function() {
       // console.log('Doing registration', regCtrl.registration);
-      $auth.submitRegistration(regCtrl.registration);
+      $auth.submitRegistration(regCtrl.registration)
+      .then(function(resp) {
+          // handle success response
+          console.log(resp);
+        })
+        .catch(function(err) {
+          // handle error response
+          console.log(err.data.errors);
+        });
+
       ngDialog.close();
       
       // switch to previously chosen menu item
