@@ -39,21 +39,20 @@
             <i class="fa fa-user" aria-hidden="true"></i> Profile
           </a>
         </li>
-        <hr class="visible-xs">
+        <hr ng-if="headCtrl.loggedIn" class="visible-xs">
 
         <li ng-if="headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'logout'}">
           <a href="#" ng-click="headCtrl.setActive('logout'); headCtrl.logOut()">
             <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
           </a>
         </li>
-        <hr class="visible-xs">
 
         <li ng-if="!headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'login'}">
           <a href="#" ng-click="headCtrl.setActive('login'); headCtrl.openLogin()">
             <i class="fa fa-sign-in" aria-hidden="true"></i> Log in
           </a>
         </li>
-        <hr class="visible-xs">
+        <hr ng-if="!headCtrl.loggedIn" class="visible-xs">
 
         <li ng-if="!headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'register'}">
           <a href="#" ng-click="headCtrl.setActive('register'); headCtrl.openRegister()">

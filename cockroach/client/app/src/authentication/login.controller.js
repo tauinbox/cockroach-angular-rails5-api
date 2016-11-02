@@ -19,12 +19,13 @@
         });
 
       ngDialog.close();
+      
+      // switch to previously chosen menu item
       menuItems.setActive(menuItems.previousItem);
     };
 
     // switch to previously chosen menu item
     loginCtrl.switchMenuItem = function() {
-      // console.log("switch to", menuItems.previousItem);
       menuItems.setActive(menuItems.previousItem);
     };
             
