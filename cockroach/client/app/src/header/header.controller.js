@@ -10,12 +10,28 @@
     headCtrl.activeMenu = menuItems.activeMenu;
 
     headCtrl.openLogin = function() {
-      ngDialog.open({ template: 'src/authentication/login.html', scope: $scope, className: 'ngdialog-theme-default', controller: "LoginController as loginCtrl" });
+      ngDialog.open({ 
+        template: 'src/authentication/login.html', 
+        scope: $scope, 
+        className: 'ngdialog-theme-default', 
+        controller: "LoginController as loginCtrl", 
+        showClose: false,
+        closeByEscape: false 
+      });
+
       $scope.activeMenu = menuItems.activeMenu;
     };
 
     headCtrl.openRegister = function () {
-      ngDialog.open({ template: 'src/authentication/register.html', scope: $scope, className: 'ngdialog-theme-default', controller: "RegisterController as regCtrl" });
+      ngDialog.open({ 
+        template: 'src/authentication/register.html', 
+        scope: $scope, 
+        className: 'ngdialog-theme-default', 
+        controller: "RegisterController as regCtrl", 
+        showClose: false,
+        closeByEscape: false
+      });
+
       $scope.activeMenu = menuItems.activeMenu;
     };
 
