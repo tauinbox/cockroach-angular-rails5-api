@@ -65,7 +65,8 @@
     };
 
     // Listener for succesful login event
-    var loginSuccessListener = $rootScope.$on('auth:login-success', function() {
+    var loginSuccessListener = $rootScope.$on('auth:login-success', function(event, user) {
+      console.log(user);
       headCtrl.loggedIn = true;
     });
 
