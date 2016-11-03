@@ -12,7 +12,7 @@
     // open Login dialog
     headCtrl.openLogin = function() {
       ngDialog.open({ 
-        template: 'src/authentication/login.html', 
+        template: 'src/authentication/login.template.html', 
         scope: $scope, 
         className: 'ngdialog-theme-default', 
         controller: "LoginController as loginCtrl", 
@@ -29,7 +29,7 @@
     // open Registration dialog
     headCtrl.openRegister = function () {
       ngDialog.open({ 
-        template: 'src/authentication/register.html', 
+        template: 'src/authentication/register.template.html', 
         scope: $scope, 
         className: 'ngdialog-theme-default', 
         controller: "RegisterController as regCtrl", 
@@ -49,12 +49,12 @@
       .then(function(resp) {
         // handle success response
         headCtrl.loggedIn = false;
-        console.log("Successfully signed out");
+        console.log(resp.data);
 
         // switch to home menu item after logging out
         menuItems.setActive('home');
       })
-      .catch(function(resp) {
+      .catch(function(err) {
         // handle error response
       });
     };
@@ -72,7 +72,7 @@
     // Listener for menu items change event
     var menuItemsListener = $rootScope.$on('menu:item-changed', function() {
       headCtrl.activeMenu = menuItems.activeMenu;
-      console.log("Active menu was set to", headCtrl.activeMenu);
+      // console.log("Active menu was set to", headCtrl.activeMenu);
     });    
 
     // Clean up all listeners on destroy

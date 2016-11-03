@@ -15,7 +15,17 @@
         })
         .catch(function(err) {
           // handle error response
-          console.log(err);
+
+          // console.log(err.errors);
+
+          ngDialog.openConfirm({ 
+            template: 'src/authentication/error.template.html',
+            data: {
+              title: "Login Unsuccessful",
+              message: err.errors.join(', ')
+            }
+          });
+
         });
 
       ngDialog.close();
