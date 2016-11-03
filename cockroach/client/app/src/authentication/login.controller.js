@@ -20,14 +20,7 @@
 
       ngDialog.close();
       
-      // switch to previously chosen menu item
-      // menuItems.setActive(menuItems.previousItem);
     };
 
-    // switch to previously chosen menu item
-    // loginCtrl.switchMenuItem = function() {
-    //   menuItems.setActive(menuItems.previousItem);
-    // };
-            
   }]);
 })();  
