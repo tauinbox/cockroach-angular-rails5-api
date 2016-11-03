@@ -16,7 +16,12 @@
         className: 'ngdialog-theme-default', 
         controller: "LoginController as loginCtrl", 
         showClose: false,
-        closeByEscape: false 
+        // closeByEscape: false,
+        preCloseCallback: function() {
+          menuItems.setActive(menuItems.previousItem);
+          // console.log("close callback was executed\n=========================");
+          return true;
+        }        
       });
 
     };
@@ -28,7 +33,11 @@
         className: 'ngdialog-theme-default', 
         controller: "RegisterController as regCtrl", 
         showClose: false,
-        closeByEscape: false
+        // closeByEscape: false,
+        preCloseCallback: function() {
+          menuItems.setActive(menuItems.previousItem);
+          return true;
+        }
       });
 
     };
@@ -58,6 +67,7 @@
 
     var menuItemsListener = $rootScope.$on('menu:item-changed', function() {
       headCtrl.activeMenu = menuItems.activeMenu;
+      console.log("Active menu was set to", headCtrl.activeMenu);
     });    
 
     headCtrl.$onDestroy = function () {

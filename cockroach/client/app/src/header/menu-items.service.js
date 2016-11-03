@@ -15,7 +15,7 @@
       }
       menuItemsSrv.activeMenu = menu;
       $rootScope.$broadcast('menu:item-changed');
-      // console.log("Set item to", menu);
+      // console.log("Set item to " + menu + ". Previous value:", menuItemsSrv.previousItem);
     };
       
   }]);

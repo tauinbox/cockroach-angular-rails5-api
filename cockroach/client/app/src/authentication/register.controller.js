@@ -22,13 +22,13 @@
       ngDialog.close();
       
       // switch to previously chosen menu item
-      menuItems.setActive(menuItems.previousItem);
+      // menuItems.setActive(menuItems.previousItem);
     };
 
     // switch to previously chosen menu item
-    regCtrl.switchMenuItem = function() {
-      menuItems.setActive(menuItems.previousItem);
-    };    
+    // regCtrl.switchMenuItem = function() {
+    //   menuItems.setActive(menuItems.previousItem);
+    // };    
 
   }]);
 })();
