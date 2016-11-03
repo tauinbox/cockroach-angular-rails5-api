@@ -17,7 +17,15 @@
         })
         .catch(function(err) {
           // handle error response
-          console.log(err.data.errors);
+
+          ngDialog.openConfirm({ 
+            template: 'src/authentication/error.template.html',
+            data: {
+              title: "Registration Unsuccessful",
+              message: err.data.errors.join(', ')
+            }
+          });
+
         });
 
       ngDialog.close();
