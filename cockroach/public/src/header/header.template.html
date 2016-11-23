@@ -27,12 +27,19 @@
         </li>
         <hr class="visible-xs">
 
+        <li ng-class="{active : headCtrl.activeMenu === 'articles'}">
+          <a href="#articles" ng-click="headCtrl.setActive('articles')">
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles
+          </a>
+        </li>
+        <hr class="visible-xs">
+
         <li ng-class="{active : headCtrl.activeMenu === 'about'}">
           <a href="#about" ng-click="headCtrl.setActive('about')">
             <i class="fa fa-info-circle" aria-hidden="true"></i> About
           </a>
         </li>
-        <hr class="visible-xs">
+        <hr class="visible-xs">        
 
         <li ng-if="headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === 'profile'}">
           <a href="#profile" ng-click="headCtrl.setActive('profile')">
