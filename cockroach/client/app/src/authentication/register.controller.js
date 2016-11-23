@@ -20,6 +20,8 @@
 
           ngDialog.openConfirm({ 
             template: 'src/authentication/error.template.html',
+
+            // put objects 'title' and 'message' into controller's dialog scope ($scope.ngDialogData)
             data: {
               title: "Registration Unsuccessful",
               message: err.data.errors.join(', ')
