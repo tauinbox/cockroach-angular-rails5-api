@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'user/members_only'
-
-  get 'home/index'
-
-  match "api" => proc { [404, {}, ['Invalid API endpoint']] }, :via => [:get]
-  match "api/*path" => proc { [404, {}, ['Invalid API endpoint']] }, :via => [:get]
-
-  # TODO: make it work correctly!
-  # match "/*path" => redirect("/?goto=%{path}"), :via => [:get]
-  match "/*path" => redirect("/"), :via => [:get]
 
   namespace :api do
     resources :articles
@@ -16,6 +6,13 @@ Rails.application.routes.draw do
 
     mount_devise_token_auth_for 'User', at: 'auth'    
   end
+
+  match "api" => proc { [404, {}, ['Invalid API endpoint']] }, :via => [:get]
+  match "api/*path" => proc { [404, {}, ['Invalid API endpoint']] }, :via => [:get]  
+
+  # TODO: make it work correctly!
+  # match "/*path" => redirect("/?goto=%{path}"), :via => [:get]
+  match "/*path" => redirect("/"), :via => [:get]  
 
   root to: "home#index"  
   
