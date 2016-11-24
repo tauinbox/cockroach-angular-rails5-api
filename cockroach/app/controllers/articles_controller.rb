@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_article, only: [:show, :update, :destroy]
 
+  # before_filter :check_format
+
   # GET /articles
   def index
     @articles = Article.all
@@ -49,4 +51,8 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :content, :user_id)
     end
+
+    # def check_format
+    #   render :nothing => true, :status => 406 unless params[:format] == 'json' || request.headers["Accept"] =~ /json/
+    # end    
 end

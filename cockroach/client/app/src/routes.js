@@ -2,7 +2,12 @@
   'use strict';
 
   angular.module('cockroach')
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+    // // remove the Hash tag (#) for a pretty URL
+    // if(window.history && window.history.pushState) {
+    //   $locationProvider.html5Mode(true);
+    // }  
 
     $urlRouterProvider.otherwise('/');
 
@@ -28,7 +33,7 @@
           }
         }
     })
-    
+
     // route for the articles page
     .state('app.articles', {
       url: 'articles',
