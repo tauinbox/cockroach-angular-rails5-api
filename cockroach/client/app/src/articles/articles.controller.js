@@ -3,10 +3,11 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('ArticlesController', ['$auth', 'ngDialog', 'menuItems', function($auth, ngDialog, menuItems) {
+  .controller('ArticlesController', ['$auth', 'ngDialog', 'menuItems', 'articles', function($auth, ngDialog, menuItems, articles) {
 
     var artCtrl = this;
-      
+
+    artCtrl.articles = articles;
 
   }]);
 })();  

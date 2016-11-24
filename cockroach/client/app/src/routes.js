@@ -41,7 +41,12 @@
         'content@': {
           templateUrl:  'src/articles/articles.template.html',
           controller:   'ArticlesController',
-          controllerAs: 'artCtrl'
+          controllerAs: 'artCtrl',
+          resolve: {
+            articles: ['ArticlesService', function (ArticlesService) {
+              return ArticlesService.getArticles();
+            }]
+          }
         }
       }
     })    
