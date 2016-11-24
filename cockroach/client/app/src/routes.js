@@ -8,6 +8,7 @@
 
     // Set up UI states
     $stateProvider
+
     // route for the home page
     .state('app', {
       url: '/',
@@ -27,6 +28,7 @@
           }
         }
     })
+    
     // route for the articles page
     .state('app.articles', {
       url: 'articles',
