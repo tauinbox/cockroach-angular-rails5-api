@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('HeaderController', ['$scope', '$rootScope', '$auth', 'ngDialog', 'menuItems', function($scope, $rootScope, $auth, ngDialog, menuItems) {
+  .controller('HeaderController', ['$scope', '$rootScope', '$auth', '$state', 'ngDialog', 'menuItems', function($scope, $rootScope, $auth, $state, ngDialog, menuItems) {
     var headCtrl = this;
 
     headCtrl.loggedIn = false;
@@ -49,7 +49,8 @@
       .then(function(resp) {
         // handle success response
         headCtrl.loggedIn = false;
-        console.log(resp.data);
+        // console.log(resp.data);
+        $state.go('app');
 
         // switch to home menu item after logging out
         menuItems.setActive('home');
