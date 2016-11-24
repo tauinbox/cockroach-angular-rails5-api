@@ -1,4 +1,4 @@
-class Api::ArticlesController < ApplicationController
+class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_article, only: [:show, :update, :destroy]
 
