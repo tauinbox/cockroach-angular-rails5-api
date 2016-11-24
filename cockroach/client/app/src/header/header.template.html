@@ -21,14 +21,14 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right" id="navlist">
         <li ng-class="{active : headCtrl.activeMenu === 'home'}">
-          <a ui-sref="home" ng-click="headCtrl.setActive('home')">
+          <a ui-sref="app" ng-click="headCtrl.setActive('home')">
             <i class="fa fa-home" aria-hidden="true"></i> Home
           </a>
         </li>
         <hr class="visible-xs">
 
         <li ng-class="{active : headCtrl.activeMenu === 'articles'}">
-          <a href="#articles" ng-click="headCtrl.setActive('articles')">
+          <a ui-sref="app.articles" ng-click="headCtrl.setActive('articles')">
             <i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles
           </a>
         </li>
@@ -72,6 +72,3 @@
 
   </div>
 </nav>
-<header class="jumbotron">
-  <img id="jumbo" src="/images/jumbo.jpg" class="img-responsive"></img>
-</header>

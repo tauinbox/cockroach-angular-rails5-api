@@ -3,10 +3,11 @@
   'use strict';
 
   angular.module('cockroach')
-  .service('menuItems', ['$rootScope', function($rootScope) {
+  .service('menuItems', ['$rootScope', '$state', function($rootScope, $state) {
     var menuItemsSrv = this;
 
-    menuItemsSrv.activeMenu = 'home';
+    // set activeMenu to active state
+    menuItemsSrv.activeMenu = ($state.current.url == '/') ? 'home' : $state.current.url;
     menuItemsSrv.previousItem = 'home';
 
     menuItemsSrv.setActive = function(menu) {

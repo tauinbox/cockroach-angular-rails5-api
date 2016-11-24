@@ -4,12 +4,13 @@
   angular.module('cockroach')
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 
     // Set up UI states
     $stateProvider
-    .state('home', {
-      url: '/home',
+    // route for the home page
+    .state('app', {
+      url: '/',
         views: {
           'header': {
             templateUrl:  'src/header/header.template.html',
@@ -26,6 +27,17 @@
           }
         }
     })
+    // route for the articles page
+    .state('app.articles', {
+      url: 'articles',
+        views: {
+          'content@': {
+            templateUrl:  'src/articles/articles.template.html',
+            controller:   'ArticlesController',
+            controllerAs: 'artCtrl'
+          }
+        }
+    })    
     ;
 
   }]);
