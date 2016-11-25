@@ -6,8 +6,8 @@
     var headCtrl = this;
 
     headCtrl.loggedIn = false;
-
     headCtrl.activeMenu = menuItems.activeMenu;
+    headCtrl.itemsList = menuItems.itemsList;
 
     // open Login dialog
     headCtrl.openLogin = function() {
@@ -23,7 +23,6 @@
           return true;
         }        
       });
-
     };
 
     // open Registration dialog
@@ -40,7 +39,6 @@
           return true;
         }
       });
-
     };
 
     // Logout function
@@ -53,7 +51,7 @@
         $state.go('app');
 
         // switch to home menu item after logging out
-        menuItems.setActive('home');
+        menuItems.setActive(headCtrl.itemsList[0]);
       })
       .catch(function(err) {
         // handle error response
@@ -75,13 +73,27 @@
     var menuItemsListener = $rootScope.$on('menu:item-changed', function() {
       headCtrl.activeMenu = menuItems.activeMenu;
       // console.log("Active menu was set to", headCtrl.activeMenu);
-    });    
+    });
+
+    // Listener for successful state change event
+    var stateChangeListener = $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+      // chek for changed state url if it's one of menu items
+      var stateItem = (toState.url == '/') ? menuItems.itemsList[0] : toState.url;
+
+      // if it's true than highlight new item
+      if (menuItems.itemsList.indexOf(stateItem) !== -1) {
+        menuItems.setActive(stateItem);
+      }
+      // console.log(stateItem);
+    });
 
     // Clean up all listeners on destroy
     headCtrl.$onDestroy = function () {
       console.log("Unregistering auth:login-success listener");
       loginSuccessListener();
       menuItemsListener();
+      stateChangeListener();
     };
 
   }]);

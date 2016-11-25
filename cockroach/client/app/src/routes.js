@@ -14,7 +14,7 @@
     // Set up UI states
     $stateProvider
 
-    // route for the home page
+    // route to Home page
     .state('app', {
       url: '/',
       views: {
@@ -34,12 +34,22 @@
       }
     })
 
-    // route for the articles page
+    // route to About page
+    .state('app.about', {
+      url: 'about',
+      views: {
+        'content@': {
+          templateUrl:  'src/static_pages/about.template.html'
+        }
+      }
+    })    
+
+    // route to Articles index page
     .state('app.articles', {
       url: 'articles',
       views: {
         'content@': {
-          templateUrl:  'src/articles/articles.template.html',
+          templateUrl:  'src/articles/articles.index.template.html',
           controller:   'ArticlesController',
           controllerAs: 'artCtrl',
           resolve: {

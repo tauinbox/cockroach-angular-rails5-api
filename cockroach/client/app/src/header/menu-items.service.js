@@ -6,10 +6,14 @@
   .service('menuItems', ['$rootScope', '$state', function($rootScope, $state) {
     var menuItemsSrv = this;
 
-    // set activeMenu to active state
-    menuItemsSrv.activeMenu = ($state.current.url == '/') ? 'home' : $state.current.url;
-    menuItemsSrv.previousItem = 'home';
+    // menu items list
+    menuItemsSrv.itemsList = ['home', 'articles', 'about', 'profile', 'login', 'logout', 'register'];
 
+    // set activeMenu to active state
+    menuItemsSrv.activeMenu = ($state.current.url == '/') ? menuItemsSrv.itemsList[0] : $state.current.url;
+    menuItemsSrv.previousItem = menuItemsSrv.itemsList[0];
+
+    // set active menu item and broadcast an event
     menuItemsSrv.setActive = function(menu) {
       if (menu !== menuItemsSrv.activeMenu) {
         menuItemsSrv.previousItem = menuItemsSrv.activeMenu;
