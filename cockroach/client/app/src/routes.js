@@ -56,9 +56,21 @@
       }
     })
 
-    // route to Articles index page
+    // route to Articles show page
+    .state('app.articlesShow', {
+      url: 'articles/:id',
+      views: {
+        'content@': {
+          templateUrl:  'src/articles/articles.show.template.html',
+          controller:   'ArticlesController',
+          controllerAs: 'artCtrl'
+        }
+      }
+    })    
+
+    // route to Articles new page
     .state('app.articlesNew', {
-      url: 'articles',
+      url: 'new_article',
       views: {
         'content@': {
           templateUrl:  'src/articles/articles.new-edit.template.html',

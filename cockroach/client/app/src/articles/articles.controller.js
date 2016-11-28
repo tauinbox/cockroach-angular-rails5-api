@@ -23,6 +23,7 @@
         artCtrl.article = {};
         artCtrl.titleName = 'Create New Article';
         artCtrl.buttonName = 'Post';
+        artCtrl.submitAction = 'create';
         break;
 
       case 'app.articlesEdit':
@@ -38,10 +39,29 @@
         );
         artCtrl.titleName = 'Edit Article';
         artCtrl.buttonName = 'Update';
+        artCtrl.submitAction = 'update';
         break;
 
       default:
     }
+
+    artCtrl.submitArticle = function(action) {
+      switch (action) {
+        case 'create':
+          // artCtrl.article.user_id = current
+          articlesSvc.articles.save(artCtrl.article, function(response) {
+            console.log('Successfully created');
+          });
+          break;
+        case 'update':
+          articlesSvc.articles.update({id: $stateParams.id}, artCtrl.article, function(response) {
+            console.log('Successfully updated');
+            $state.go('app.articles', { id: response.id });
+          });        
+          break;
+        default:
+      }
+    };
 
   }]);
 })();  
