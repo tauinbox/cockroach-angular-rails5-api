@@ -39,16 +39,6 @@
       }      
     })
 
-    // route to Not Authenticated page
-    .state('app.not_authenticated', {
-      url: 'not_authenticated',
-      views: {
-        'content@': {
-          templateUrl:  'src/static_pages/not-authenticated.template.html'
-        }
-      }
-    }) 
-
     // route to About page
     .state('app.about', {
       url: 'about',
@@ -104,9 +94,10 @@
         }
       },
       resolve: {
-        auth: ['$auth', '$state', function ($auth, $state) {
+        auth: ['$auth', '$rootScope', '$q', function ($auth, $rootScope, $q) {
           return $auth.validateUser().catch(function(err) {
-            $state.go('app.not_authenticated');
+            $rootScope.$broadcast('header:do-authenticate');
+            return $q.reject("not authenticated");
           });
         }]
       }      
@@ -123,9 +114,10 @@
         }
       },
       resolve: {
-        auth: ['$auth', '$state', function ($auth, $state) {
+        auth: ['$auth', '$state', '$q', function ($auth, $state, $q) {
           return $auth.validateUser().catch(function(err) {
-            $state.go('app.not_authenticated');
+            $rootScope.$broadcast('header:do-authenticate');
+            return $q.reject("not authenticated");       
           });
         }]
       }       

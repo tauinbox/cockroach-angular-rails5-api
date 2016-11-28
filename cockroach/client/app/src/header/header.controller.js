@@ -91,12 +91,18 @@
       // console.log(stateItem);
     });
 
+    var authenticateListener = $rootScope.$on('header:do-authenticate', function() {
+      headCtrl.setActive(headCtrl.itemsList[4]);
+      headCtrl.openLogin();
+    });
+
     // Clean up all listeners on destroy
     headCtrl.$onDestroy = function () {
       console.log("Unregistering auth:login-success listener");
       loginSuccessListener();
       menuItemsListener();
       stateChangeListener();
+      authenticateListener();
     };
 
   }]);
