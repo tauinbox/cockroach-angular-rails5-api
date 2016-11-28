@@ -12,7 +12,9 @@
             {{article.content}}
           </div>
           <div class="panel-footer">
-            <a ui-sref="app.articlesShow({ id: article.id })">Show</a> | <a ui-sref="app.articlesEdit({ id: article.id })">Edit</a>
+            <a ui-sref="app.articlesShow({ id: article.id })">Show</a>
+            <span ng-if="article.user_id === artCtrl.current_user_id"> | <a ui-sref="app.articlesEdit({ id: article.id })">Edit</a></span>
+            <span ng-if="article.user_id === artCtrl.current_user_id"> | <a href="#" ng-click="artCtrl.deleteArticle(article.id)">Delete</a></span>
           </div>
         </div>
       </div>

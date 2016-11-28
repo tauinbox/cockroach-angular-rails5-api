@@ -7,6 +7,10 @@
 
     var artCtrl = this;
 
+    if (auth.id) {
+      artCtrl.current_user_id = auth.id;      
+    }
+
     switch ($state.current.name) {
       case 'app.articles':
         articlesSvc.articles.query(
@@ -14,9 +18,10 @@
             artCtrl.articles = response;
           },
           function (error) {
-            artCtrl.errMessage = "Error: " + error.status + " " + error.statusText; //not used now
+            artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
+            console.log(artCtrl.errMessage);
           }
-        );          
+        );        
         break;
 
       case 'app.articlesNew':
@@ -24,7 +29,7 @@
         artCtrl.titleName = 'Create New Article';
         artCtrl.buttonName = 'Post';
         artCtrl.submitAction = 'create';
-        artCtrl.article.user_id = auth.id;
+        artCtrl.article.user_id = artCtrl.current_user_id;
         // console.log(auth);
         break;
 
@@ -36,6 +41,7 @@
           }, 
           function(error) {
             artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
+            console.log(artCtrl.errMessage);
           }
         );
         artCtrl.titleName = 'Edit Article';
@@ -51,6 +57,7 @@
           }, 
           function(error) {
             artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
+            console.log(artCtrl.errMessage);
           }
         );
         break;        
@@ -76,6 +83,19 @@
           break;
         default:
       }
+    };
+
+    artCtrl.deleteArticle = function(article_id) {
+      articlesSvc.articles.delete({ id: article_id })
+      .$promise.then(
+        function(response) {
+          $state.reload();
+        }, 
+        function(error) {
+          artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
+          console.log(artCtrl.errMessage);
+        }
+      );      
     };
 
   }]);
