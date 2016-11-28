@@ -184,11 +184,11 @@ p.alert {
   margin-top: 0px;
 }
 
-.articles .panel-body {
+.article .panel-body, .articles .panel-body {
   color: #006699;
 }
 
-.articles .panel-footer {
+.article .panel-footer, .articles .panel-footer {
   color: darkgray;
 }
 
