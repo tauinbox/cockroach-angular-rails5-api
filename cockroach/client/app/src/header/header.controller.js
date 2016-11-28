@@ -2,12 +2,18 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('HeaderController', ['$scope', '$rootScope', '$auth', '$state', 'ngDialog', 'menuItems', function($scope, $rootScope, $auth, $state, ngDialog, menuItems) {
+  .controller('HeaderController', ['$scope', '$rootScope', '$auth', 'auth', '$state', 'ngDialog', 'menuItems', function($scope, $rootScope, $auth, auth, $state, ngDialog, menuItems) {
     var headCtrl = this;
 
-    headCtrl.loggedIn = false;
     headCtrl.activeMenu = menuItems.activeMenu;
     headCtrl.itemsList = menuItems.itemsList;
+
+    // check if user is authenticated
+    if (auth.id) {
+      headCtrl.loggedIn = true;
+    } else {
+      headCtrl.loggedIn = false;
+    }
 
     // open Login dialog
     headCtrl.openLogin = function() {

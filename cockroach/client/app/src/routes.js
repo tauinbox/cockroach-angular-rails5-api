@@ -31,7 +31,12 @@
         'footer': {
           templateUrl : 'src/footer/footer.template.html'
         }
-      }
+      },
+      resolve: {
+        auth: ['$auth', function ($auth) {
+          return $auth.validateUser().catch(function(err) {return err;});
+        }]
+      }      
     })
 
     // route to Not Authenticated page
