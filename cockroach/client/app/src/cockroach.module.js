@@ -8,8 +8,30 @@
 
   .config(['$authProvider', 'baseURL', function($authProvider, baseURL) {
 
-    $authProvider.configure({ apiUrl: baseURL });
+    $authProvider.configure({ 
+      apiUrl: baseURL
 
-  }]);
+      // handleLoginResponse: function(response) {
+      //   return response;
+      // },
+
+      // handleAccountUpdateResponse: function(response) {
+      //   return response;
+      // },
+
+      // handleTokenValidationResponse: function(response) {
+      //   return response;
+      // }      
+    });
+
+  }])
+
+  // .run(['$rootScope', function ($rootScope) {
+  //   console.log('set auth validator');
+  //   $rootScope.$on('auth:validation-error', function (ev, error) {
+  //     console.log('validation error!', error);
+  //   });    
+  // }])
+  ;
   
 })();

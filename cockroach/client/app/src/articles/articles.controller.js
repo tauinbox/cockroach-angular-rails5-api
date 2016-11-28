@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('ArticlesController', ['$state', '$stateParams', '$auth', 'ngDialog', 'menuItems', 'articlesSvc', function($state, $stateParams, $auth, ngDialog, menuItems, articlesSvc) {
+  .controller('ArticlesController', ['$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', function($state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc) {
 
     var artCtrl = this;
 
@@ -24,6 +24,8 @@
         artCtrl.titleName = 'Create New Article';
         artCtrl.buttonName = 'Post';
         artCtrl.submitAction = 'create';
+        artCtrl.article.user_id = auth.id;
+        // console.log(auth);
         break;
 
       case 'app.articlesEdit':
@@ -46,17 +48,19 @@
     }
 
     artCtrl.submitArticle = function(action) {
+      // console.log(artCtrl.article);
       switch (action) {
         case 'create':
           // artCtrl.article.user_id = current
           articlesSvc.articles.save(artCtrl.article, function(response) {
-            console.log('Successfully created');
+            console.log('Successfully created', response.id);
+            // $state.go('app.articlesShow', { id: response.id });
           });
           break;
         case 'update':
           articlesSvc.articles.update({id: $stateParams.id}, artCtrl.article, function(response) {
-            console.log('Successfully updated');
-            $state.go('app.articles', { id: response.id });
+            console.log('Successfully updated', response.id);
+            // $state.go('app.articlesShow', { id: response.id });
           });        
           break;
         default:

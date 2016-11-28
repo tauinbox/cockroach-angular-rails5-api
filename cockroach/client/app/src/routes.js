@@ -34,6 +34,16 @@
       }
     })
 
+    // route to Not Authenticated page
+    .state('app.not_authenticated', {
+      url: 'not_authenticated',
+      views: {
+        'content@': {
+          templateUrl:  'src/static_pages/not-authenticated.template.html'
+        }
+      }
+    }) 
+
     // route to About page
     .state('app.about', {
       url: 'about',
@@ -53,7 +63,12 @@
           controller:   'ArticlesController',
           controllerAs: 'artCtrl'
         }
-      }
+      },
+      resolve: {
+        auth: ['$auth', function ($auth) {
+          return $auth.validateUser().catch(function(err) {return err;});
+        }]
+      }      
     })
 
     // route to Articles show page
@@ -65,7 +80,12 @@
           controller:   'ArticlesController',
           controllerAs: 'artCtrl'
         }
-      }
+      },
+      resolve: {
+        auth: ['$auth', function ($auth) {
+          return $auth.validateUser().catch(function(err) {return err;});
+        }]
+      }       
     })    
 
     // route to Articles new page
@@ -77,8 +97,34 @@
           controller:   'ArticlesController',
           controllerAs: 'artCtrl'
         }
-      }
-    })      
+      },
+      resolve: {
+        auth: ['$auth', '$state', function ($auth, $state) {
+          return $auth.validateUser().catch(function(err) {
+            $state.go('app.not_authenticated');
+          });
+        }]
+      }      
+    })
+
+    // route to Articles edit page
+    .state('app.articlesEdit', {
+      url: 'articles/:id/edit',
+      views: {
+        'content@': {
+          templateUrl:  'src/articles/articles.new-edit.template.html',
+          controller:   'ArticlesController',
+          controllerAs: 'artCtrl'
+        }
+      },
+      resolve: {
+        auth: ['$auth', '$state', function ($auth, $state) {
+          return $auth.validateUser().catch(function(err) {
+            $state.go('app.not_authenticated');
+          });
+        }]
+      }       
+    })          
     ;
 
   }]);
