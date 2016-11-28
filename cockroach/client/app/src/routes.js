@@ -51,15 +51,22 @@
         'content@': {
           templateUrl:  'src/articles/articles.index.template.html',
           controller:   'ArticlesController',
-          controllerAs: 'artCtrl',
-          resolve: {
-            articles: ['ArticlesService', function (ArticlesService) {
-              return ArticlesService.getArticles();
-            }]
-          }
+          controllerAs: 'artCtrl'
         }
       }
-    })    
+    })
+
+    // route to Articles index page
+    .state('app.articlesNew', {
+      url: 'articles',
+      views: {
+        'content@': {
+          templateUrl:  'src/articles/articles.new-edit.template.html',
+          controller:   'ArticlesController',
+          controllerAs: 'artCtrl'
+        }
+      }
+    })      
     ;
 
   }]);

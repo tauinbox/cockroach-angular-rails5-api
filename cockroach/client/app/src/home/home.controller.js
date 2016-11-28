@@ -14,11 +14,9 @@
 
       if ($state.get('app.' + redirect_params.goto)) {
         // if it's some of our states, then set it to active
-        menuItems.setActive(redirect_params.goto);
         $state.go('app.' + redirect_params.goto);
       } else {
         // otherwise go to home state
-        menuItems.setActive('home');
         $state.go('app');
       }
     }

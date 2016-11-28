@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .service('ArticlesService', ['$resource', 'baseURL', function($resource, baseURL) {
+  .service('articlesSvc', ['$resource', 'baseURL', function($resource, baseURL) {
 
     var articlesSrv = this;
 
@@ -13,10 +13,10 @@
       }
     });
 
-    // used for resolve in routes.js
-    articlesSrv.getArticles = function() {
-      return articlesSrv.articles.query().$promise;
-    };    
+    // // used for resolve in routes.js
+    // articlesSrv.getArticles = function() {
+    //   return articlesSrv.articles.query().$promise;
+    // };    
       
   }]);
     
