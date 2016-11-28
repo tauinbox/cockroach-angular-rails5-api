@@ -17,6 +17,7 @@
         })
         .catch(function(err) {
           // handle error response
+          // console.log(err);
 
           ngDialog.openConfirm({ 
             template: 'src/authentication/error.template.html',
@@ -24,7 +25,7 @@
             // put objects 'title' and 'message' into controller's dialog scope ($scope.ngDialogData)
             data: {
               title: "Registration Unsuccessful",
-              message: err.data.errors.join(', ')
+              message: err.data.errors.full_messages ? err.data.errors.full_messages.join(', ') : err.data.errors ? err.data.errors.join(', ') : 'Uncaught error'
             }
           });
 
