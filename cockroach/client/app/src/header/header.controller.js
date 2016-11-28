@@ -8,7 +8,7 @@
     headCtrl.activeMenu = menuItems.activeMenu;
     headCtrl.itemsList = menuItems.itemsList;
 
-    // check if user is authenticated
+    // check if user is authenticated by checking resolved auth property
     if (auth.id) {
       headCtrl.loggedIn = true;
     } else {
@@ -55,9 +55,6 @@
         headCtrl.loggedIn = false;
         // console.log(resp.data);
         $state.go('app');
-
-        // switch to home menu item after logging out
-        menuItems.setActive(headCtrl.itemsList[0]);
       })
       .catch(function(err) {
         // handle error response

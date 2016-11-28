@@ -7,7 +7,7 @@
 
     var articlesSrv = this;
 
-    articlesSrv.articles = $resource(baseURL + "/articles", null, {
+    articlesSrv.articles = $resource(baseURL + "/articles/:id", null, {
       'update': {
         method: 'PUT'
       }

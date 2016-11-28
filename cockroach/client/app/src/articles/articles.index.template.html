@@ -1,5 +1,26 @@
 <div class="container">
-  <h1 align="center">Articles page</h1>
-  <p>Found articles: {{artCtrl.articles}}</p>
-  <a ui-sref="app.articlesNew">Create New Article</a>
+
+  <div class="articles">
+    <h1 align="center">Articles page</h1>
+
+      <div class="row" ng-repeat="article in artCtrl.articles">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">{{article.title}}</h4>
+          </div>
+          <div class="panel-body">
+            {{article.content}}
+          </div>
+          <div class="panel-footer">
+            TODO: footer
+          </div>
+        </div>
+      </div>
+
+    <div class="button-wrapper">
+      <button class="btn btn-info" ui-sref="app.articlesNew">I Wanna Post My New Article!</button>
+    </div>    
+    
+  </div>
+
 </div>

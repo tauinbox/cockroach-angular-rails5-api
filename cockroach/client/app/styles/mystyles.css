@@ -184,6 +184,14 @@ p.alert {
   margin-top: 0px;
 }
 
+.articles .panel-body {
+  color: #006699;
+}
+
+.articles .panel-footer {
+  color: darkgray;
+}
+
 .article h3 {
   color: #006699;
 }
