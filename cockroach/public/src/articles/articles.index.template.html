@@ -4,19 +4,7 @@
     <h1 align="center">Articles page</h1>
 
       <div class="row" ng-repeat="article in artCtrl.articles">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h4 class="panel-title">{{::article.title}}</h4>
-          </div>
-          <div class="panel-body">
-            {{::article.content}}
-          </div>
-          <div class="panel-footer">
-            <a ui-sref="app.articlesShow({ id: article.id })">Show</a>
-            <span ng-if="article.user_id === artCtrl.current_user_id"> | <a ui-sref="app.articlesEdit({ id: article.id })">Edit</a></span>
-            <span ng-if="article.user_id === artCtrl.current_user_id"> | <a href="#" ng-click="artCtrl.deleteArticle(article.id)">Delete</a></span>
-          </div>
-        </div>
+        <article-item article="article" current_user_id="artCtrl.current_user_id" delete-article="artCtrl.deleteArticle(article_id)"></article-item>
       </div>
 
     <div class="button-wrapper">

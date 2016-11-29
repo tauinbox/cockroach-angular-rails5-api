@@ -1,0 +1,15 @@
+<!-- article item component template -->
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="panel-title">{{$ctrl.article.title}}</h4>
+  </div>
+  <div class="panel-body">
+    {{$ctrl.article.content}}
+  </div>
+  <div class="panel-footer">
+    <a ui-sref="app.articlesShow({ id: $ctrl.article.id })">Show</a>
+    <span ng-if="$ctrl.article.user_id === $ctrl.current_user_id"> | <a ui-sref="app.articlesEdit({ id: $ctrl.article.id })">Edit</a></span>
+    <span ng-if="$ctrl.article.user_id === $ctrl.current_user_id"> | <a href="#" ng-click="$ctrl.deleteArticle(article_id: $ctrl.article.id)">Delete</a></span>
+  </div>
+</div>
