@@ -7,7 +7,7 @@
     templateUrl: 'src/articles/article-item.template.html',
     bindings: {
       article: '<',
-      current_user_id: '<',
+      currentUserId: '<',
       deleteArticle: '&'
     }
   });
