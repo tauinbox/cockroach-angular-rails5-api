@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('ArticlesController', ['$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', function($state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc) {
+  .controller('ArticlesController', ['$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc) {
 
     var artCtrl = this;
 
@@ -11,6 +11,7 @@
       artCtrl.current_user_id = auth.id;      
     }
 
+    // detect actions
     switch ($state.current.name) {
       case 'app.articles':
         articlesSvc.articles.query(
@@ -89,7 +90,8 @@
       articlesSvc.articles.delete({ id: article_id })
       .$promise.then(
         function(response) {
-          // $state.reload();
+          // broadcast an event with deleted id if succeeded
+          $rootScope.$broadcast('article:item-deleted', {id: article_id});
         }, 
         function(error) {
           artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
