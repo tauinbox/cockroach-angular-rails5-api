@@ -6,10 +6,10 @@
       <div class="row" ng-repeat="article in artCtrl.articles">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h4 class="panel-title">{{article.title}}</h4>
+            <h4 class="panel-title">{{::article.title}}</h4>
           </div>
           <div class="panel-body">
-            {{article.content}}
+            {{::article.content}}
           </div>
           <div class="panel-footer">
             <a ui-sref="app.articlesShow({ id: article.id })">Show</a>
