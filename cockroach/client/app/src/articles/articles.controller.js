@@ -89,7 +89,7 @@
       articlesSvc.articles.delete({ id: article_id })
       .$promise.then(
         function(response) {
-          $state.reload();
+          // $state.reload();
         }, 
         function(error) {
           artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
