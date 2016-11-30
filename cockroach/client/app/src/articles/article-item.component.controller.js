@@ -14,7 +14,7 @@
 
     $ctrl.deleteItem = function(identifier) {
       $ctrl.deleteId = identifier;
-      
+
       // call referenced function to delete article
       $ctrl.deleteArticle({ id: identifier });
     };
@@ -31,6 +31,7 @@
     });
 
     $ctrl.$onDestroy = function () {
+      // console.log('controller instance has been destroyed', $ctrl);
       articleDeletionListener();
     };    
 

@@ -7,15 +7,19 @@
 
     var artCtrl = this;
 
+    // set current_user_id if authorized
     if (auth.id) {
       artCtrl.current_user_id = auth.id;      
     }
 
     // detect actions
     switch ($state.current.name) {
+
+      // index action
       case 'app.articles':
         articlesSvc.articles.query(
           function (response) {
+            // set articles collection if succeeded
             artCtrl.articles = response;
           },
           function (error) {
@@ -25,6 +29,7 @@
         );        
         break;
 
+      // create new article action
       case 'app.articlesNew':
         artCtrl.article = {};
         artCtrl.titleName = 'Create New Article';
@@ -34,10 +39,12 @@
         // console.log(auth);
         break;
 
+      // edit article action
       case 'app.articlesEdit':
         articlesSvc.articles.get({ id: $stateParams.id })
         .$promise.then(
           function(response) {
+            // set article object
             artCtrl.article = response;
           }, 
           function(error) {
@@ -50,10 +57,12 @@
         artCtrl.submitAction = 'update';
         break;
 
+      // show article action
       case 'app.articlesShow':
         articlesSvc.articles.get({ id: $stateParams.id })
         .$promise.then(
           function(response) {
+            // set article object
             artCtrl.article = response;
           }, 
           function(error) {
@@ -66,6 +75,7 @@
       default:
     }
 
+    // submit article function
     artCtrl.submitArticle = function(action) {
       // console.log(artCtrl.article);
       switch (action) {
@@ -86,12 +96,13 @@
       }
     };
 
-    artCtrl.deleteArticle = function(article_id) {
-      articlesSvc.articles.delete({ id: article_id })
+    // delete article function
+    artCtrl.deleteArticle = function(articleId) {
+      articlesSvc.articles.delete({ id: articleId })
       .$promise.then(
         function(response) {
           // broadcast an event with deleted id if succeeded
-          $rootScope.$broadcast('article:item-deleted', {id: article_id});
+          $rootScope.$broadcast('article:item-deleted', {id: articleId});
         }, 
         function(error) {
           artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
