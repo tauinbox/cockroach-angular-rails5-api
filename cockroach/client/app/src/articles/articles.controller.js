@@ -23,8 +23,7 @@
             artCtrl.articles = response;
           },
           function (error) {
-            artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
-            console.log(artCtrl.errMessage);
+            httpResponsePopup("Can't get articles data", error);
           }
         );        
         break;
@@ -110,6 +109,20 @@
         }
       );      
     };
+
+    // Popup info dialog
+    function httpResponsePopup(header, object) {
+      var body =
+        '<div class="ngdialog-message">' +
+        ' <div><h3>' + header + '</h3></div>' +
+        ' <div><p>' + ((object.statusText.length > 0) ? "Status (" + object.status + "). " + object.statusText : 'request was aborted') + '</p></div>' +
+        ' <div class="ngdialog-buttons">' +
+        '  <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click=confirm("OK")>OK</button>' +
+        ' </div>' +
+        '</div>';
+
+      ngDialog.openConfirm({ template: body, plain: true });      
+    }
 
   }]);
 })();  

@@ -20,7 +20,7 @@
           // console.log(err);
 
           ngDialog.openConfirm({ 
-            template: 'src/authentication/error.template.html',
+            template: 'src/static_pages/notification.template.html',
 
             // put objects 'title' and 'message' into controller's dialog scope ($scope.ngDialogData)
             data: {
