@@ -19,10 +19,11 @@
       case 'app.articles':
         articlesSvc.articles.query(
           function (response) {
-            // set articles collection if succeeded
+            // Success callback is called with value (Object|Array)
             artCtrl.articles = response;
           },
           function (error) {
+            // The error callback is called with (httpResponse) argument
             httpResponsePopup("Can't get articles data", error);
           }
         );        
