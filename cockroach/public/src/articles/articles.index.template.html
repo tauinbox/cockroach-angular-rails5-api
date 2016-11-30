@@ -3,9 +3,10 @@
   <div class="articles">
     <h1 align="center">Articles page</h1>
 
-      <div class="row" ng-repeat="article in artCtrl.articles">
-        <article-item article="article" current-user-id="artCtrl.current_user_id" delete-article="artCtrl.deleteArticle(id)"></article-item>
-      </div>
+    <article-item ng-repeat="article in artCtrl.articles" 
+      article="article" 
+      current-user-id="artCtrl.current_user_id" 
+      delete-article="artCtrl.deleteArticle(id)"></article-item>
 
     <div class="button-wrapper">
       <button class="btn btn-info" ui-sref="app.articlesNew">I Wanna Post My New Article!</button>
