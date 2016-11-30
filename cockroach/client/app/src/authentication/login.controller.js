@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('LoginController', ['$auth', 'ngDialog', 'menuItems', function($auth, ngDialog, menuItems) {
+  .controller('LoginController', ['$auth', 'ngDialog', 'menuItems', 'popup', function($auth, ngDialog, menuItems, popup) {
 
     var loginCtrl = this;
       
@@ -15,19 +15,8 @@
         })
         .catch(function(err) {
           // handle error response
-
-          // console.log(err.errors);
-
-          ngDialog.openConfirm({ 
-            template: 'src/static_pages/notification.template.html',
-
-            // put objects 'title' and 'message' into controller's dialog scope ($scope.ngDialogData)
-            data: {
-              title: "Login Unsuccessful",
-              message: err.errors.join(', ')
-            }
-          });
-
+          var msg = err.errors.join(', ');
+          popup.displayMessage('Login Unsuccessful', msg);
         });
 
       ngDialog.close();

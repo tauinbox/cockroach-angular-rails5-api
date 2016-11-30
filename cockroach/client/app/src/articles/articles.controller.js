@@ -3,7 +3,9 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('ArticlesController', ['$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc) {
+  .controller('ArticlesController', [
+    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup',
+    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup) {
 
     var artCtrl = this;
 
@@ -24,7 +26,7 @@
           },
           function (error) {
             // The error callback is called with (httpResponse) argument
-            httpResponsePopup("Can't get articles data", error);
+            popup.displayMessage("Can't get articles data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
           }
         );        
         break;
@@ -110,20 +112,6 @@
         }
       );      
     };
-
-    // Popup info dialog
-    function httpResponsePopup(header, object) {
-      var body =
-        '<div class="ngdialog-message">' +
-        ' <div><h3>' + header + '</h3></div>' +
-        ' <div><p>' + ((object.statusText.length > 0) ? "Status (" + object.status + "). " + object.statusText : 'request was aborted') + '</p></div>' +
-        ' <div class="ngdialog-buttons">' +
-        '  <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click=confirm("OK")>OK</button>' +
-        ' </div>' +
-        '</div>';
-
-      ngDialog.openConfirm({ template: body, plain: true });      
-    }
 
   }]);
 })();  

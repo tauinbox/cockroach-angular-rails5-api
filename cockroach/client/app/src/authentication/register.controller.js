@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('RegisterController', ['ngDialog', '$auth', 'menuItems', function(ngDialog, $auth, menuItems) {
+  .controller('RegisterController', ['ngDialog', '$auth', 'menuItems', 'popup', function(ngDialog, $auth, menuItems, popup) {
 
     var regCtrl = this;
     
@@ -17,18 +17,8 @@
         })
         .catch(function(err) {
           // handle error response
-          // console.log(err);
-
-          ngDialog.openConfirm({ 
-            template: 'src/static_pages/notification.template.html',
-
-            // put objects 'title' and 'message' into controller's dialog scope ($scope.ngDialogData)
-            data: {
-              title: "Registration Unsuccessful",
-              message: err.data.errors.full_messages ? err.data.errors.full_messages.join(', ') : err.data.errors ? err.data.errors.join(', ') : 'Uncaught error'
-            }
-          });
-
+          popup.displayMessage('Registration Unsuccessful', 
+            err.data.errors.full_messages ? err.data.errors.full_messages.join(', ') : err.data.errors ? err.data.errors.join(', ') : 'Uncaught error');
         });
 
       ngDialog.close();
