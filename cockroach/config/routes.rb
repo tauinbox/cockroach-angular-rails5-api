@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   scope path: '/api' do
     resources :articles
-    resources :users
-    resources :profiles, only: [:show, :update, :destroy]
+    
+    resources :users do
+      resource :profile, only: [:show, :update, :destroy]
+    end
 
     mount_devise_token_auth_for 'User', at: 'auth', controllers: {
-      # create a blank profile when user is created
+      # override devise_token_auth registrations_controller
       registrations: 'devise_token_auth_custom/registrations'
     }  
   end
