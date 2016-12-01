@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     resources :users
     resources :profiles, only: [:show, :update, :destroy]
 
-    mount_devise_token_auth_for 'User', at: 'auth'    
+    mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+      # create a blank profile when user is created
+      registrations: 'devise_token_auth_custom/registrations'
+    }  
   end
 
   match "api" => proc { [404, {}, ['Invalid API endpoint']] }, :via => [:get]

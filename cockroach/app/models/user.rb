@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
 
   before_create :skip_confirmation!
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
   
 end
