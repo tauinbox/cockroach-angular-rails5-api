@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope path: '/api' do
     resources :articles
     resources :users
+    resources :profiles, only: [:show, :update, :destroy]
 
     mount_devise_token_auth_for 'User', at: 'auth'    
   end
