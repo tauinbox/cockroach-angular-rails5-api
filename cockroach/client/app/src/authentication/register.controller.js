@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('RegisterController', ['ngDialog', '$auth', 'menuItems', 'popup', function(ngDialog, $auth, menuItems, popup) {
+  .controller('RegisterController', ['ngDialog', '$auth', '$state', 'menuItems', 'popup', function(ngDialog, $auth, $state, menuItems, popup) {
 
     var regCtrl = this;
     
@@ -13,7 +13,8 @@
       $auth.submitRegistration(regCtrl.registration)
       .then(function(resp) {
           // handle success response
-          console.log(resp);
+          // console.log(resp);
+          $state.reload();
         })
         .catch(function(err) {
           // handle error response
