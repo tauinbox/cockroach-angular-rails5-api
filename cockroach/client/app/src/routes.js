@@ -4,7 +4,7 @@
   angular.module('cockroach')
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    // remove the Hash tag (#) for a pretty URL
+    // remove Hash tag (#) for a pretty URL
     if(window.history && window.history.pushState) {
       $locationProvider.html5Mode(true);
     }  
@@ -34,7 +34,7 @@
       },
       resolve: {
         auth: ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) {return err;});
+          return $auth.validateUser().catch(function(err) { return err; });
         }]
       }      
     })
@@ -61,7 +61,7 @@
       },
       resolve: {
         auth: ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) {return err;});
+          return $auth.validateUser().catch(function(err) { return err; });
         }]
       }      
     })
@@ -78,7 +78,7 @@
       },
       resolve: {
         auth: ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) {return err;});
+          return $auth.validateUser().catch(function(err) { return err; });
         }]
       }       
     })    
@@ -121,7 +121,47 @@
           });
         }]
       }       
-    })         
+    })
+
+    // route to Profile show page
+    .state('app.profile', {
+      url: 'profile',
+      views: {
+        'content@': {
+          templateUrl:  'src/profile/profile.show.template.html',
+          controller:   'ProfileController',
+          controllerAs: 'profileCtrl'
+        }
+      },
+      resolve: {
+        auth: ['$auth', '$state', '$q', function ($auth, $state, $q) {
+          return $auth.validateUser().catch(function(err) {
+            $rootScope.$broadcast('header:do-authenticate');
+            return $q.reject("not authenticated");       
+          });
+        }]
+      }      
+    })
+
+    // route to Profile edit page
+    .state('app.profileEdit', {
+      url: 'profile/:user_id',
+      views: {
+        'content@': {
+          templateUrl:  'src/profile/profile.edit.template.html',
+          controller:   'ProfileController',
+          controllerAs: 'profileCtrl'
+        }
+      },
+      resolve: {
+        auth: ['$auth', '$state', '$q', function ($auth, $state, $q) {
+          return $auth.validateUser().catch(function(err) {
+            $rootScope.$broadcast('header:do-authenticate');
+            return $q.reject("not authenticated");       
+          });
+        }]
+      }      
+    })              
     ;
 
   }]);

@@ -42,7 +42,7 @@
         <hr class="visible-xs">        
 
         <li ng-if="headCtrl.loggedIn" ng-class="{active : headCtrl.activeMenu === headCtrl.itemsList[3]}">
-          <a href="#profile" ng-click="headCtrl.setActive(headCtrl.itemsList[3])">
+          <a ui-sref="app.profile">
             <i class="fa fa-user" aria-hidden="true"></i> Profile
           </a>
         </li>
