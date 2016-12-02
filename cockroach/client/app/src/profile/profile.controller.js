@@ -32,7 +32,7 @@
 
       // edit profile action
       case 'app.profileEdit':
-        profileSvc.profile.get({ user_id: current_user_id })
+        profileSvc.profile.get({ user_id: profileCtrl.current_user_id })
         .$promise.then(
           function(response) {
             // set profile object
