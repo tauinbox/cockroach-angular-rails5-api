@@ -22,6 +22,9 @@
           function(response) {
             // set profile object
             profileCtrl.profile = response;
+            if (!profileCtrl.profile.nickname && !profileCtrl.profile.firstname && !profileCtrl.profile.lastname && !profileCtrl.profile.status && !profileCtrl.profile.userpic) {
+              $state.go('app.profileEdit', { user_id:  profileCtrl.current_user_id });
+            }
           }, 
           function(error) {
             profileCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
@@ -47,6 +50,12 @@
 
       default:
     }
+
+    profileCtrl.submitProfile = function() {
+      profileSvc.profile.update({ user_id: profileCtrl.current_user_id }, profileCtrl.profile, function(response) {
+        $state.go('app.profile');
+      }); 
+    };
       
   }]);
 })(); 
