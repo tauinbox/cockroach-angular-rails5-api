@@ -1,7 +1,7 @@
 <div class="container">
   
-  <div class="article">
-    <h1 align="center">{{profileCtrl.profile.firstname ? 
+  <div class="body-content">
+    <h1>{{profileCtrl.profile.firstname ? 
         (profileCtrl.profile.lastname ? profileCtrl.profile.firstname + ' ' + profileCtrl.profile.lastname : profileCtrl.profile.firstname) : profileCtrl.profile.lastname ? 
         profileCtrl.profile.lastname : profileCtrl.user_email}}</h1>
     <div class="panel panel-primary">

@@ -177,26 +177,24 @@ p.alert {
   background-color: #F5F5F5;
 }
 
-/*ARTICLES*/
+/* CONTENT */
 
-.articles h1, .article h1, .new-edit h1, .profile h1 {
+.body-content h1 {
   color: #5ac9ff;
   margin-top: 0px;
+  text-align: center;
 }
 
-.article .panel-body, .articles .panel-body {
+.body-content .panel-body {
   color: #006699;
 }
 
-.article .panel-footer, .articles .panel-footer {
+.body-content .panel-footer {
   color: darkgray;
 }
 
-.article h3 {
+.body-content h3 {
   color: #006699;
-}
-
-.article h3 {
   margin-top: 10px;
 }
 
@@ -204,14 +202,11 @@ div.button-wrapper {
   text-align: center;
 }
 
-div.article {
+div.body-content {
   margin-left: 3px;
   margin-right: 3px;
 }
 
-/*.article div.panel.panel-primary {
-  margin-bottom: 0px;
-}*/
 
 /*RESPONSIVE DESIGN*/
 
