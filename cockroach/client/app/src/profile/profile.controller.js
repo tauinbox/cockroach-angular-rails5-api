@@ -10,7 +10,7 @@
     if (auth.id) {
       profileCtrl.current_user_id = auth.id;
       profileCtrl.user_email = auth.email;
-    }    
+    }
 
     // detect actions
     switch ($state.current.name) {
@@ -22,7 +22,15 @@
           function(response) {
             // set profile object
             profileCtrl.profile = response;
+
+            // set header
+            // priority: nickname -> firstname + lastname -> firstname -> lastname -> email
+            profileCtrl.header = (profileCtrl.profile.nickname ? profileCtrl.profile.nickname : 
+              profileCtrl.profile.firstname ? profileCtrl.profile.lastname ? profileCtrl.profile.firstname + ' ' + profileCtrl.profile.lastname : profileCtrl.profile.firstname : 
+              profileCtrl.profile.lastname ? profileCtrl.profile.lastname : profileCtrl.user_email);
+
             if (!profileCtrl.profile.nickname && !profileCtrl.profile.firstname && !profileCtrl.profile.lastname && !profileCtrl.profile.status && !profileCtrl.profile.userpic) {
+              // go to Edit form when Profile is empty
               $state.go('app.profileEdit', { user_id:  profileCtrl.current_user_id });
             }
           }, 
@@ -40,6 +48,12 @@
           function(response) {
             // set profile object
             profileCtrl.profile = response;
+
+            // set header
+            // priority: nickname -> firstname + lastname -> firstname -> lastname -> email
+            profileCtrl.header = (profileCtrl.profile.nickname ? profileCtrl.profile.nickname : 
+              profileCtrl.profile.firstname ? profileCtrl.profile.lastname ? profileCtrl.profile.firstname + ' ' + profileCtrl.profile.lastname : profileCtrl.profile.firstname : 
+              profileCtrl.profile.lastname ? profileCtrl.profile.lastname : profileCtrl.user_email);         
           }, 
           function(error) {
             profileCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
