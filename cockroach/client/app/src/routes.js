@@ -4,14 +4,28 @@
   angular.module('cockroach')
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
+    // used while resolving user validation ('auth' property) to authenticate user when it necessarily
+    var mandatoryAuthentication = ['$auth', '$rootScope', '$q', function ($auth, $rootScope, $q) {
+          return $auth.validateUser().catch(function(err) {
+            $rootScope.$broadcast('header:do-authenticate');
+            return $q.reject("not authenticated");       
+          });
+        }];
+
+    // used while resolving user validation ('auth' property) to check if user is already authenticated
+    var checkIfAuthenticated = ['$auth', function ($auth) {
+          return $auth.validateUser().catch(function(err) { return err; });
+        }];
+
     // remove Hash tag (#) for a pretty URL
     if(window.history && window.history.pushState) {
       $locationProvider.html5Mode(true);
     }  
 
+    // set up default route
     $urlRouterProvider.otherwise('/');
 
-    // Set up UI states
+    // set up UI states
     $stateProvider
 
     // route to Home page
@@ -33,9 +47,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) { return err; });
-        }]
+        auth: checkIfAuthenticated
       }      
     })
 
@@ -60,9 +72,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) { return err; });
-        }]
+        auth: checkIfAuthenticated
       }      
     })
 
@@ -77,9 +87,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) { return err; });
-        }]
+        auth: checkIfAuthenticated
       }       
     })    
 
@@ -94,12 +102,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', '$rootScope', '$q', function ($auth, $rootScope, $q) {
-          return $auth.validateUser().catch(function(err) {
-            $rootScope.$broadcast('header:do-authenticate');
-            return $q.reject("not authenticated");
-          });
-        }]
+        auth: mandatoryAuthentication
       }      
     })
 
@@ -114,12 +117,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', '$state', '$q', function ($auth, $state, $q) {
-          return $auth.validateUser().catch(function(err) {
-            $rootScope.$broadcast('header:do-authenticate');
-            return $q.reject("not authenticated");       
-          });
-        }]
+        auth: mandatoryAuthentication
       }       
     })
 
@@ -134,12 +132,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', '$state', '$q', function ($auth, $state, $q) {
-          return $auth.validateUser().catch(function(err) {
-            $rootScope.$broadcast('header:do-authenticate');
-            return $q.reject("not authenticated");       
-          });
-        }]
+        auth: mandatoryAuthentication
       }      
     })
 
@@ -154,12 +147,7 @@
         }
       },
       resolve: {
-        auth: ['$auth', '$state', '$q', function ($auth, $state, $q) {
-          return $auth.validateUser().catch(function(err) {
-            $rootScope.$broadcast('header:do-authenticate');
-            return $q.reject("not authenticated");       
-          });
-        }]
+        auth: mandatoryAuthentication
       }      
     })              
     ;
