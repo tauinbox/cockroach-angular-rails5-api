@@ -8,7 +8,8 @@
 
     // set current_user_id if authorized
     if (auth.id) {
-      profileCtrl.current_user_id = auth.id;    
+      profileCtrl.current_user_id = auth.id;
+      profileCtrl.user_email = auth.email;
     }    
 
     // detect actions

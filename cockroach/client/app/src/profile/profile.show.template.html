@@ -1,4 +1,19 @@
 <div class="container">
-  <h1 align="center">Profile page</h1>
-  <p>This page is under construction</p>
+  
+  <div class="article">
+    <h1 align="center">{{profileCtrl.profile.firstname ? 
+        (profileCtrl.profile.lastname ? profileCtrl.profile.firstname + ' ' + profileCtrl.profile.lastname : profileCtrl.profile.firstname) : profileCtrl.profile.lastname ? 
+        profileCtrl.profile.lastname : profileCtrl.user_email}}</h1>
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        some data
+      </div>
+
+      <div class="panel-footer">
+        <span ng-if="profileCtrl.profile.user_id === profileCtrl.current_user_id"><a ui-sref="app.profileEdit({ user_id:  profileCtrl.current_user_id })">Edit</a></span>
+      </div>    
+    </div>
+  </div>
+
+
 </div>
