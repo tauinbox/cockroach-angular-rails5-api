@@ -29,7 +29,7 @@
         }];
 
     // used to resolve profile data
-    var preloadProfile = ['profileSvc', 'auth', function(profileSvc, auth) {
+    var preloadProfile = ['$q', 'profileSvc', 'auth', 'popup', function($q, profileSvc, auth, popup) {
           return profileSvc.profile.get({ user_id: auth.id }).$promise.catch(function(error) {
             popup.displayMessage("Can't get profile data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
             return $q.reject(error);
