@@ -105,6 +105,9 @@
         function(response) {
           // broadcast an event with deleted id if succeeded
           $rootScope.$broadcast('article:item-deleted', {id: articleId});
+          if ($state.current.name === 'app.articlesShow') {
+            $state.go('app.articles');
+          }
         }, 
         function(error) {
           artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
