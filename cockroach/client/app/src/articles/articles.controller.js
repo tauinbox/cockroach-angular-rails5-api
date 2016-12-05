@@ -4,8 +4,8 @@
 
   angular.module('cockroach')
   .controller('ArticlesController', [
-    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup',
-    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup) {
+    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup', 'articlesData', 'articleData',
+    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup, articlesData, articleData) {
 
     var artCtrl = this;
 
@@ -19,16 +19,20 @@
 
       // index action
       case 'app.articles':
-        articlesSvc.articles.query(
-          function (response) {
-            // Success callback is called with value (Object|Array)
-            artCtrl.articles = response;
-          },
-          function (error) {
-            // The error callback is called with (httpResponse) argument
-            popup.displayMessage("Can't get articles data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
-          }
-        );        
+        // ===============================================
+        // REFACTORED! Move all get-data logic to resolve object
+
+        // articlesSvc.articles.query(
+        //   function (response) {
+        //     // Success callback is called with value (Object|Array)
+        //     artCtrl.articles = response;
+        //   },
+        //   function (error) {
+        //     // The error callback is called with (httpResponse) argument
+        //     popup.displayMessage("Can't get articles data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
+        //   }
+        // );
+        artCtrl.articles = articlesData;  
         break;
 
       // create new article action
@@ -43,17 +47,18 @@
 
       // edit article action
       case 'app.articlesEdit':
-        articlesSvc.articles.get({ id: $stateParams.id })
-        .$promise.then(
-          function(response) {
-            // set article object
-            artCtrl.article = response;
-          }, 
-          function(error) {
-            artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
-            console.log(artCtrl.errMessage);
-          }
-        );
+        // articlesSvc.articles.get({ id: $stateParams.id })
+        // .$promise.then(
+        //   function(response) {
+        //     // set article object
+        //     artCtrl.article = response;
+        //   }, 
+        //   function(error) {
+        //     artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
+        //     console.log(artCtrl.errMessage);
+        //   }
+        // );
+        artCtrl.article = articleData;
         artCtrl.titleName = 'Edit Article';
         artCtrl.buttonName = 'Update';
         artCtrl.submitAction = 'update';
@@ -61,17 +66,18 @@
 
       // show article action
       case 'app.articlesShow':
-        articlesSvc.articles.get({ id: $stateParams.id })
-        .$promise.then(
-          function(response) {
-            // set article object
-            artCtrl.article = response;
-          }, 
-          function(error) {
-            artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
-            console.log(artCtrl.errMessage);
-          }
-        );
+        // articlesSvc.articles.get({ id: $stateParams.id })
+        // .$promise.then(
+        //   function(response) {
+        //     // set article object
+        //     artCtrl.article = response;
+        //   }, 
+        //   function(error) {
+        //     artCtrl.errMessage = "Error: " + error.status + " " + error.statusText;
+        //     console.log(artCtrl.errMessage);
+        //   }
+        // );
+        artCtrl.article = articleData;
         break;        
 
       default:

@@ -17,6 +17,17 @@
           return $auth.validateUser().catch(function(err) { return err; });
         }];
 
+    // used to resolve optional injected object (work around)
+    var nullFunction = function() { return null; };
+
+    // used to resolve article data
+    var preloadArticle = ['$stateParams', '$q', 'articlesSvc', 'popup', function($stateParams, $q, articlesSvc, popup) {
+          return articlesSvc.articles.get({ id: $stateParams.id }).$promise.catch(function(error) {
+            popup.displayMessage("Can't get article data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
+            return $q.reject(error);
+          });
+        }];
+
     // remove Hash tag (#) for a pretty URL
     if(window.history && window.history.pushState) {
       $locationProvider.html5Mode(true);
@@ -72,7 +83,14 @@
         }
       },
       resolve: {
-        auth: checkIfAuthenticated
+        auth: checkIfAuthenticated,
+        articlesData: ['$q', 'articlesSvc', 'popup', function($q, articlesSvc, popup) {
+          return articlesSvc.articles.query().$promise.catch(function(error) {
+            popup.displayMessage("Can't get articles data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
+            return $q.reject(error);
+          });
+        }],
+        articleData: nullFunction
       }      
     })
 
@@ -87,7 +105,9 @@
         }
       },
       resolve: {
-        auth: checkIfAuthenticated
+        auth: checkIfAuthenticated,
+        articlesData: nullFunction,  
+        articleData: preloadArticle    
       }       
     })    
 
@@ -102,7 +122,9 @@
         }
       },
       resolve: {
-        auth: mandatoryAuthentication
+        auth: mandatoryAuthentication,
+        articlesData: nullFunction,
+        articleData: nullFunction                
       }      
     })
 
@@ -117,7 +139,9 @@
         }
       },
       resolve: {
-        auth: mandatoryAuthentication
+        auth: mandatoryAuthentication,
+        articlesData: nullFunction,  
+        articleData: preloadArticle        
       }       
     })
 
