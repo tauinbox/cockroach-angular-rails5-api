@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('LoginController', ['$auth', 'ngDialog', 'menuItems', 'popup', function($auth, ngDialog, menuItems, popup) {
+  .controller('LoginController', ['$auth', '$state', 'ngDialog', 'menuItems', 'popup', function($auth, $state, ngDialog, menuItems, popup) {
 
     var loginCtrl = this;
       
@@ -12,6 +12,7 @@
       .then(function(resp) {
           // handle success response
           // console.log(resp);
+          $state.reload();
         })
         .catch(function(err) {
           // handle error response
