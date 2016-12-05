@@ -23,6 +23,9 @@
             // set profile object
             profileCtrl.profile = response;
 
+            // set previous state
+            profileCtrl.prevState = $rootScope.previousState;            
+
             // set header
             // priority: nickname -> firstname + lastname -> firstname -> lastname -> email
             profileCtrl.header = (profileCtrl.profile.nickname ? profileCtrl.profile.nickname : 

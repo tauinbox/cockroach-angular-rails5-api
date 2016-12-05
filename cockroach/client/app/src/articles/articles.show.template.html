@@ -9,8 +9,8 @@
 
       <div class="panel-footer">
         <button ui-sref="app.articles" class="btn btn-primary btn-sm">Back</button>
-        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ui-sref="app.articlesEdit({ id: artCtrl.article.id })" class="btn btn-primary btn-sm">Edit</button>
-        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ng-click="artCtrl.deleteItem(artCtrl.article.id)" class="btn btn-primary btn-sm">Delete</button>        
+        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ng-click="artCtrl.deleteItem(artCtrl.article.id)" class="btn btn-primary btn-sm pull-right">Delete</button>        
+        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ui-sref="app.articlesEdit({ id: artCtrl.article.id })" class="btn btn-primary btn-sm pull-right">Edit</button>
       </div>    
     </div>
   </div>

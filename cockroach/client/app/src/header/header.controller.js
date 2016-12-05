@@ -81,6 +81,10 @@
     // Listener for successful state change event
     var stateChangeListener = $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
+      // remember previous state
+      $rootScope.previousState = fromState.name;
+      // console.log($rootScope.previousState);
+
       // chek for changed state url if it's one of menu items
       var stateItem = (toState.url == '/') ? menuItems.itemsList[0] : toState.url;
 
@@ -95,6 +99,7 @@
       headCtrl.setActive(headCtrl.itemsList[4]);
       headCtrl.openLogin();
     });
+
 
     // Clean up all listeners on destroy
     headCtrl.$onDestroy = function () {

@@ -207,6 +207,10 @@ div.body-content {
   margin-right: 3px;
 }
 
+button.pull-right {
+  margin-left: 5px;
+}
+
 
 /*RESPONSIVE DESIGN*/
 

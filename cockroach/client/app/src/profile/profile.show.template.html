@@ -13,7 +13,8 @@
       </div>
 
       <div class="panel-footer">
-        <button ng-if="profileCtrl.profile.user_id === profileCtrl.current_user_id" ui-sref="app.profileEdit({ user_id:  profileCtrl.current_user_id })" class="btn btn-primary btn-sm">Edit</button>
+        <button ui-state="profileCtrl.prevState" class="btn btn-primary btn-sm">Back</button>
+        <button ng-if="profileCtrl.profile.user_id === profileCtrl.current_user_id" ui-sref="app.profileEdit({ user_id:  profileCtrl.current_user_id })" class="btn btn-primary btn-sm pull-right">Edit</button>
       </div>    
     </div>
   </div>
