@@ -28,6 +28,21 @@
           });
         }];
 
+    // used to resolve profile data
+    var preloadProfile = ['profileSvc', 'auth', function(profileSvc, auth) {
+          return profileSvc.profile.get({ user_id: auth.id }).$promise.catch(function(error) {
+            popup.displayMessage("Can't get profile data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
+            return $q.reject(error);
+          });
+        }];
+
+    // used to resolve header data
+    var preloadHeader = function(profileData) {
+          return (profileData.nickname ? profileData.nickname : 
+              profileData.firstname ? profileData.lastname ? profileData.firstname + ' ' + profileData.lastname : profileData.firstname : 
+              profileData.lastname ? profileData.lastname : auth.email);
+        };
+
     // remove Hash tag (#) for a pretty URL
     if(window.history && window.history.pushState) {
       $locationProvider.html5Mode(true);
@@ -156,7 +171,11 @@
         }
       },
       resolve: {
-        auth: mandatoryAuthentication
+        auth: mandatoryAuthentication,
+        // inject previously resolved auth object (see preloadProfile function)
+        profileData: preloadProfile,
+        // inject previously resolved profileData object (see preloadHeader function)
+        headerData: preloadHeader
       }      
     })
 
@@ -171,7 +190,11 @@
         }
       },
       resolve: {
-        auth: mandatoryAuthentication
+        auth: mandatoryAuthentication,
+        // inject previously resolved auth object (see preloadProfile function)
+        profileData: preloadProfile,
+        // inject previously resolved profileData object (see preloadHeader function)
+        headerData: preloadHeader        
       }      
     })              
     ;
