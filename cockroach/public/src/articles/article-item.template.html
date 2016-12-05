@@ -8,9 +8,9 @@
       {{$ctrl.article.content}}
     </div>
     <div class="panel-footer">
-      <a ui-sref="app.articlesShow({ id: $ctrl.article.id })">Show</a>
-      <span ng-if="$ctrl.article.user_id === $ctrl.currentUserId"> | <a ui-sref="app.articlesEdit({ id: $ctrl.article.id })">Edit</a></span>
-      <span ng-if="$ctrl.article.user_id === $ctrl.currentUserId"> | <a href="#" ng-click="$ctrl.deleteItem($ctrl.article.id)">Delete</a></span>
+      <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">Show</button>
+      <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ui-sref="app.articlesEdit({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">Edit</button>
+      <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ng-click="$ctrl.deleteItem($ctrl.article.id)" class="btn btn-primary btn-sm">Delete</button>
     </div>
   </div>
 </div>
