@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   before_create :skip_confirmation!
 
   has_one :profile, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
 end

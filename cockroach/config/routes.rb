@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   scope path: '/api' do
-    resources :articles
+    resources :articles do
+      resources :comments, only: [:create, :update, :destroy]
+    end
     
     resources :users do
       resource :profile, only: [:show, :update, :destroy]
