@@ -3,7 +3,9 @@
   'use strict';
 
   angular.module('cockroach')
-  .controller('ProfileController', ['$rootScope', '$state', 'profileSvc', 'auth', 'profileData', 'headerData', function($rootScope, $state, profileSvc, auth, profileData, headerData) {
+  .controller('ProfileController', ['$rootScope', '$state', 'profileSvc', 'auth', 'profileData', 'currentUserDispName', 
+    function($rootScope, $state, profileSvc, auth, profileData, currentUserDispName) {
+      
     var profileCtrl = this;
 
     // set current_user_id if authorized
@@ -44,7 +46,7 @@
         // );
 
         profileCtrl.profile = profileData;
-        profileCtrl.header = headerData;
+        profileCtrl.header = currentUserDispName;
         if (!profileCtrl.profile.nickname && !profileCtrl.profile.firstname && !profileCtrl.profile.lastname && !profileCtrl.profile.status && !profileCtrl.profile.userpic) {
           // go to Edit form when Profile is empty
           $state.go('app.profileEdit', { user_id:  profileCtrl.current_user_id });
@@ -71,7 +73,7 @@
         //   }
         // );
         profileCtrl.profile = profileData;
-        profileCtrl.header = headerData;
+        profileCtrl.header = currentUserDispName;
         break;
 
       default:

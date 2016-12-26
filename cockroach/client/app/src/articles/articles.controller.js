@@ -4,8 +4,8 @@
 
   angular.module('cockroach')
   .controller('ArticlesController', [
-    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup', 'articlesData', 'articleData',
-    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup, articlesData, articleData) {
+    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup', 'articlesData', 'articleData', 'profileSvc', 'profileData', 'currentUserDispName',
+    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup, articlesData, articleData, profileSvc, profileData, currentUserDispName) {
 
     var artCtrl = this;
 
@@ -13,6 +13,8 @@
     if (auth.id) {
       artCtrl.current_user_id = auth.id;
       artCtrl.current_user_email = auth.email;
+      artCtrl.current_user_profile = profileData;
+      artCtrl.current_user_display_name = currentUserDispName;
     }
 
     // detect actions

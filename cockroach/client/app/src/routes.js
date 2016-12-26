@@ -37,7 +37,7 @@
         }];
 
     // used to resolve header data
-    var preloadHeader = function(profileData) {
+    var userDisplayName = function(profileData) {
           return (profileData.nickname ? profileData.nickname : 
               profileData.firstname ? profileData.lastname ? profileData.firstname + ' ' + profileData.lastname : profileData.firstname : 
               profileData.lastname ? profileData.lastname : auth.email);
@@ -105,7 +105,11 @@
             return $q.reject(error);
           });
         }],
-        articleData: nullFunction
+        articleData: nullFunction,
+        // inject previously resolved auth object (see preloadProfile function)
+        profileData: preloadProfile,
+        // inject previously resolved profileData object (see userDisplayName function)
+        currentUserDispName: userDisplayName          
       }      
     })
 
@@ -122,7 +126,11 @@
       resolve: {
         auth: checkIfAuthenticated,
         articlesData: nullFunction,  
-        articleData: preloadArticle    
+        articleData: preloadArticle,
+        // inject previously resolved auth object (see preloadProfile function)
+        profileData: preloadProfile,
+        // inject previously resolved profileData object (see userDisplayName function)
+        currentUserDispName: userDisplayName           
       }       
     })    
 
@@ -156,7 +164,11 @@
       resolve: {
         auth: mandatoryAuthentication,
         articlesData: nullFunction,  
-        articleData: preloadArticle        
+        articleData: preloadArticle,
+        // inject previously resolved auth object (see preloadProfile function)
+        profileData: preloadProfile,
+        // inject previously resolved profileData object (see userDisplayName function)
+        currentUserDispName: userDisplayName               
       }       
     })
 
@@ -174,8 +186,8 @@
         auth: mandatoryAuthentication,
         // inject previously resolved auth object (see preloadProfile function)
         profileData: preloadProfile,
-        // inject previously resolved profileData object (see preloadHeader function)
-        headerData: preloadHeader
+        // inject previously resolved profileData object (see userDisplayName function)
+        currentUserDispName: userDisplayName
       }      
     })
 
@@ -193,8 +205,8 @@
         auth: mandatoryAuthentication,
         // inject previously resolved auth object (see preloadProfile function)
         profileData: preloadProfile,
-        // inject previously resolved profileData object (see preloadHeader function)
-        headerData: preloadHeader        
+        // inject previously resolved profileData object (see userDisplayName function)
+        currentUserDispName: userDisplayName        
       }      
     })              
     ;

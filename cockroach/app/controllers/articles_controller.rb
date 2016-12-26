@@ -13,7 +13,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
-    render json: @article, include: :comments
+    render json: @article, include: {
+      comments: {
+        include: {
+          user: { only: [:id, :email], include: { profile: { only: [:nickname, :firstname, :lastname] } } }
+        }
+      }
+    }
   end
 
   # POST /articles
