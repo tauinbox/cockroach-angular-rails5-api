@@ -100,6 +100,10 @@
       headCtrl.openLogin();
     });
 
+    var stateChangeErrListener = $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      console.log("failed to change state:", error);
+    });
+
 
     // Clean up all listeners on destroy
     headCtrl.$onDestroy = function () {
@@ -108,6 +112,7 @@
       menuItemsListener();
       stateChangeListener();
       authenticateListener();
+      stateChangeErrListener();
     };
 
   }]);

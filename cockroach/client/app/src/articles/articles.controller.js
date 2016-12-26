@@ -4,8 +4,8 @@
 
   angular.module('cockroach')
   .controller('ArticlesController', [
-    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup', 'articlesData', 'articleData', 'profileSvc', 'profileData', 'currentUserDispName',
-    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup, articlesData, articleData, profileSvc, profileData, currentUserDispName) {
+    '$rootScope', '$state', '$stateParams', '$auth', 'auth', 'ngDialog', 'menuItems', 'articlesSvc', 'popup', 'articlesData', 'articleData', 'profileData', 'currentUserDispName',
+    function($rootScope, $state, $stateParams, $auth, auth, ngDialog, menuItems, articlesSvc, popup, articlesData, articleData, profileData, currentUserDispName) {
 
     var artCtrl = this;
 

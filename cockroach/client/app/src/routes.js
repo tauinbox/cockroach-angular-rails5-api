@@ -14,7 +14,9 @@
 
     // used while resolving user validation ('auth' property) to check if user is already authenticated
     var checkIfAuthenticated = ['$auth', function ($auth) {
-          return $auth.validateUser().catch(function(err) { return err; });
+          return $auth.validateUser().catch(function(err) { 
+            return err; 
+          });
         }];
 
     // used to resolve optional injected object (work around)
@@ -30,18 +32,25 @@
 
     // used to resolve profile data
     var preloadProfile = ['$q', 'profileSvc', 'auth', 'popup', function($q, profileSvc, auth, popup) {
-          return profileSvc.profile.get({ user_id: auth.id }).$promise.catch(function(error) {
-            popup.displayMessage("Can't get profile data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
-            return $q.reject(error);
-          });
+          if (auth.id) {
+            return profileSvc.profile.get({ user_id: auth.id }).$promise.catch(function(error) {
+              popup.displayMessage("Can't get profile data", (error.statusText.length > 0) ? "Status (" + error.status + "). " + error.statusText : 'request was aborted');
+              return $q.reject(error);
+            });
+          }
+          else {
+            return null;
+          }
         }];
 
     // used to resolve header data
-    var userDisplayName = function(profileData) {
-          return (profileData.nickname ? profileData.nickname : 
-              profileData.firstname ? profileData.lastname ? profileData.firstname + ' ' + profileData.lastname : profileData.firstname : 
-              profileData.lastname ? profileData.lastname : auth.email);
-        };
+    var userDisplayName = ['profileData', 'auth', function(profileData, auth) {
+          if (profileData) {
+            return (profileData.nickname ? profileData.nickname : 
+                profileData.firstname ? profileData.lastname ? profileData.firstname + ' ' + profileData.lastname : profileData.firstname : 
+                profileData.lastname ? profileData.lastname : auth.email);
+          }
+        }];
 
     // remove Hash tag (#) for a pretty URL
     if(window.history && window.history.pushState) {
@@ -109,7 +118,7 @@
         // inject previously resolved auth object (see preloadProfile function)
         profileData: preloadProfile,
         // inject previously resolved profileData object (see userDisplayName function)
-        currentUserDispName: userDisplayName          
+        currentUserDispName: userDisplayName
       }      
     })
 

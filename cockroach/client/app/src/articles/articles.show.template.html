@@ -29,7 +29,7 @@
 
   <div style="clear: both"></div>   
 
-  <form class="form-horizontal" name="commentForm" ng-submit="artCtrl.submitComment()" novalidate>
+  <form ng-if="artCtrl.current_user_id" class="form-horizontal" name="commentForm" ng-submit="artCtrl.submitComment()" novalidate>
 
     <div class="form-group" ng-class="{'has-error' : commentForm.mycomment.$error.required && !commentForm.mycomment.$pristine}">
       <label for="mycomment" class="col-sm-2 control-label">{{artCtrl.current_user_display_name}} says:</label>
