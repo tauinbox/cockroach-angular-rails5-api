@@ -156,7 +156,11 @@
       resolve: {
         auth: mandatoryAuthentication,
         articlesData: nullFunction,
-        articleData: nullFunction                
+        articleData: nullFunction,
+        // inject previously resolved auth object (see preloadProfile function)
+        profileData: preloadProfile,
+        // inject previously resolved profileData object (see userDisplayName function)
+        currentUserDispName: userDisplayName                       
       }      
     })
 
