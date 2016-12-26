@@ -13,6 +13,12 @@
       }
     });
 
+    articlesSrv.comments = $resource(baseURL + "/articles/:id/comments/:commentId", null, {
+      'update': {
+        method: 'PUT'
+      }
+    });
+
     // // used for resolve in routes.js
     // articlesSrv.getArticles = function() {
     //   return articlesSrv.articles.query().$promise;

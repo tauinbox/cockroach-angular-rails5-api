@@ -11,7 +11,8 @@
 
     // set current_user_id if authorized
     if (auth.id) {
-      artCtrl.current_user_id = auth.id;      
+      artCtrl.current_user_id = auth.id;
+      artCtrl.current_user_email = auth.email;
     }
 
     // detect actions
@@ -120,6 +121,13 @@
           console.log(artCtrl.errMessage);
         }
       );      
+    };
+
+    artCtrl.submitComment = function() {
+      articlesSvc.comments.save({ id: $stateParams.id }, { body: artCtrl.mycomment })
+      .$promise.then(function() {
+        $state.go($state.current, {}, {reload: true});
+      });      
     };
 
   }]);
