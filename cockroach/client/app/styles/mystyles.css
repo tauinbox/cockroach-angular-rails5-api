@@ -211,6 +211,13 @@ button.pull-right {
   margin-left: 5px;
 }
 
+blockquote footer {
+  color: #5ac9ff;
+}
+
+label[for="mycomment"] {
+  color: #5ac9ff;
+}
 
 /*RESPONSIVE DESIGN*/
 
