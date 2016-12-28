@@ -137,6 +137,18 @@ p.alert {
   display: inline-block;
 }
 
+/*.ng-touched.ng-valid {
+  border: 2px green solid;
+}*/
+
+/*.ng-touched.ng-invalid {
+  border: 2px #ff00ff solid;
+}*/
+
+/*.has-error .control-label, .has-error .form-control, .has-error .help-block {
+  color: yellow;
+}*/
+
 /*FORMS*/
 
 #login-form > a:hover, #register-form > a:hover {
