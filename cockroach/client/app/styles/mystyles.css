@@ -231,6 +231,12 @@ label[for="mycomment"] {
   color: #5ac9ff;
 }
 
+.trix-wrapper img {
+  max-width: 100% !important;
+  height: auto;
+  display: block;
+}
+
 /*RESPONSIVE DESIGN*/
 
 @media (max-width: 1199px) {
