@@ -4,7 +4,7 @@
     <h1>{{::artCtrl.article.title}}</h1>
     <div class="panel panel-primary">
       <div class="panel-body">
-        {{::artCtrl.article.content}}
+        <p ng-bind-html="::artCtrl.article.content | trustHTML" class="trix-wrapper"></p>
       </div>
 
       <div class="panel-footer">

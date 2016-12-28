@@ -15,7 +15,8 @@
           <div class="form-group">
             <label for="content" class="col-sm-2 control-label">Content</label>
             <div class="col-sm-10">
-              <textarea class="form-control" id="content" name="content" rows="7" placeholder="Put your content here" ng-model="artCtrl.article.content"></textarea>
+              <!-- <textarea class="form-control" id="content" name="content" rows="7" placeholder="Put your content here" ng-model="artCtrl.article.content"></textarea> -->
+              <trix-editor angular-trix ng-model="artCtrl.article.content" class="trix-content"></trix-editor>
             </div>
           </div>
         </form>  
