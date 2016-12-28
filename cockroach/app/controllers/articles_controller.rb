@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     render json: @article, include: {
       comments: {
         include: {
-          user: { only: [:id, :email], include: { profile: { only: [:nickname, :firstname, :lastname] } } }
+          user: { only: :email, include: { profile: { only: [:nickname, :firstname, :lastname] } } }
         }
       }
     }
