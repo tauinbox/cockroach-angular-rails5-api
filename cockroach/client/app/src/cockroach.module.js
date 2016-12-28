@@ -2,7 +2,7 @@
   
   'use strict';
 
-  angular.module('cockroach', ['ui.router', 'ui.bootstrap', 'ngResource', 'ngDialog', 'ng-token-auth'])
+  angular.module('cockroach', ['ui.router', 'ui.bootstrap', 'ngResource', 'ngDialog', 'ng-token-auth', 'angularTrix'])
 
   .constant("baseURL", "http://localhost:3000/api")
   // .constant("baseURL", "https://blablablog.herokuapp.com/api")
