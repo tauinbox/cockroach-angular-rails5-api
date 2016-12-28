@@ -33,13 +33,16 @@
         }
       }
 
+      // check if we found one to go
       if (state_to_go) {
         // if url doesn't contain any parameters
         if (!url_to_check[1]) {
           $state.go(state_to_go);
         } else {
           var param = {};
-          param[target_state_url[1].replace(':', '')] = url_to_check[1];          
+          // set param's property previously removing ':' symbol from string
+          param[target_state_url[1].replace(':', '')] = url_to_check[1];
+          // go to the state with given param object         
           $state.go(state_to_go, param);
         }
 
