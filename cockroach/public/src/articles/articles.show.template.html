@@ -29,9 +29,9 @@
 
   <div style="clear: both"></div>   
 
-  <form ng-if="artCtrl.current_user_id" class="form-horizontal" name="commentForm" ng-submit="artCtrl.submitComment()" novalidate>
+  <form ng-if="artCtrl.current_user_id" id="comment-form" class="form-horizontal" name="commentForm" ng-submit="artCtrl.submitComment()" novalidate>
 
-    <div class="form-group" ng-class="{'has-error' : commentForm.mycomment.$error.required && !commentForm.mycomment.$pristine}">
+<!--     <div class="form-group" ng-class="{'has-error' : commentForm.mycomment.$error.required && !commentForm.mycomment.$pristine}">
       <label for="mycomment" class="col-sm-2 control-label">{{artCtrl.current_user_display_name}} says:</label>
       <div class="col-sm-8">
         <textarea class="form-control" id="mycomment" name="mycomment" ng-model="artCtrl.mycomment" rows="7" placeholder="Leave your comment here" required></textarea>
@@ -39,7 +39,14 @@
           this field is required
         </span>
       </div>
-    </div>
+    </div> -->
+
+    <div class="form-group">
+      <label for="mycomment" class="col-sm-2 control-label">{{artCtrl.current_user_display_name}} says:</label>
+      <div class="col-sm-8">
+        <textarea class="form-control" id="mycomment" name="mycomment" ng-model="artCtrl.mycomment" rows="7" placeholder="Leave your comment here" required></textarea>
+      </div>
+    </div>    
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
