@@ -88,6 +88,9 @@
       // chek for changed state url if it's one of menu items
       var stateItem = (toState.url == '/') ? menuItems.itemsList[0] : toState.url;
 
+      // get only first element of url to check for appropriate menu item
+      stateItem = stateItem.split('/')[0];
+
       // if it's true than highlight new item
       if (menuItems.itemsList.indexOf(stateItem) !== -1) {
         menuItems.setActive(stateItem);
