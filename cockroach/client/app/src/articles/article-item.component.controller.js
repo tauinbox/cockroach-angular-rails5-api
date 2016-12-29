@@ -7,9 +7,27 @@
     var $ctrl = this;
     $ctrl.deleteId = null;
 
-    $ctrl.$onInit = function() {
-      // console.log('Initialized');
-      // console.log($element);
+    // $ctrl.$onInit = function() {
+    //   console.log('Initialized');
+    // };
+
+    // $ctrl.$postLink = function() {
+    // };
+
+    $ctrl.$doCheck = function() {
+      var content = $element.find('.trix-wrapper');
+      // check if component template is loaded
+      if (content[0].innerText.length > 0) {
+        // console.log($element.find('.trix-wrapper')[0].innerText);
+
+        content.trunk8({
+          lines: 5,
+          tooltip: false
+          // fill: '&hellip;', /*(Default: '&hellip;') The string to insert in place of the omitted text. This value may include HTML.*/
+          // //side: 'right', /*(Default: 'right') The side of the text from which to truncate. Valid values include 'center', 'left', and 'right'.*/
+          // //onTruncate /*(Callback): Called after truncation is completed.*/
+        });
+      }
     };
 
     $ctrl.deleteItem = function(identifier) {
