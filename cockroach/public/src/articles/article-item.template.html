@@ -8,7 +8,7 @@
       <div ng-bind-html="$ctrl.article.content | trustHTML" class="trix-wrapper"></div>
     </div>
     <div class="panel-footer">
-      <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">Show</button>
+      <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">More</button>
       <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ng-click="$ctrl.deleteItem($ctrl.article.id)" class="btn btn-primary btn-sm pull-right">Delete</button>
       <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ui-sref="app.articlesEdit({ id: $ctrl.article.id })" class="btn btn-primary btn-sm pull-right">Edit</button>      
     </div>
