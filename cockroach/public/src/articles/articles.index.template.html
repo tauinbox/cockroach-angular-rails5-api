@@ -3,7 +3,7 @@
   <div class="body-content">
     <h1>Articles page</h1>
 
-    <article-item ng-repeat="article in artCtrl.articles" 
+    <article-item ng-repeat="article in artCtrl.articles | orderBy: '-updated_at'" 
       article="article" 
       current-user-id="artCtrl.current_user_id" 
       delete-article="artCtrl.deleteArticle(id)"></article-item>
