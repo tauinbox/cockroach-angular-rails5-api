@@ -8,12 +8,15 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
 
-    render json: @articles
+    render json: @articles, include: {
+      user: { only: :email, include: { profile: { only: [:nickname, :firstname, :lastname] } } }
+    }
   end
 
   # GET /articles/1
   def show
     render json: @article, include: {
+      user: { only: :email, include: { profile: { only: [:nickname, :firstname, :lastname] } } },
       comments: {
         include: {
           user: { only: :email, include: { profile: { only: [:nickname, :firstname, :lastname] } } }

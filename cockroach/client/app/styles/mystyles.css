@@ -245,6 +245,11 @@ label[for="mycomment"] {
   color: magenta;
 }
 
+div.text-right.posted-by {
+  color: #5AC9FF;
+  margin-top: 10px;
+}
+
 /*hide images from index page*/
 div.truncated img {
   display: none;

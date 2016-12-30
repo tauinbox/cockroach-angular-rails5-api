@@ -4,7 +4,10 @@
     <h1>{{::artCtrl.article.title}}</h1>
     <div class="panel panel-primary">
       <div class="panel-body">
-        <p ng-bind-html="::artCtrl.article.content | trustHTML" class="trix-wrapper"></p>
+        <div ng-bind-html="::artCtrl.article.content | trustHTML" class="trix-wrapper"></div>
+        <div class="text-right posted-by">Posted by {{artCtrl.article.user.profile.nickname ? artCtrl.article.user.profile.nickname : 
+          artCtrl.article.user.profile.firstname ? artCtrl.article.user.profile.lastname ? artCtrl.article.user.profile.firstname + ' ' + artCtrl.article.user.profile.lastname : artCtrl.article.user.profile.firstname : 
+          artCtrl.article.user.profile.lastname ? artCtrl.article.user.profile.lastname : artCtrl.article.user.email}}, {{artCtrl.article.updated_at | date: 'MMM d, y h:mm a'}}</div> 
       </div>
 
       <div class="panel-footer">
