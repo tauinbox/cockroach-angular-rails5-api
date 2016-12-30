@@ -6,6 +6,9 @@
     </div>
     <div class="panel-body">
       <div ng-bind-html="$ctrl.article.content | trustHTML" class="trix-wrapper truncated"></div>
+      <div class="text-right posted-by">Posted by {{$ctrl.article.user.profile.nickname ? $ctrl.article.user.profile.nickname : 
+        $ctrl.article.user.profile.firstname ? $ctrl.article.user.profile.lastname ? $ctrl.article.user.profile.firstname + ' ' + $ctrl.article.user.profile.lastname : $ctrl.article.user.profile.firstname : 
+        $ctrl.article.user.profile.lastname ? $ctrl.article.user.profile.lastname : $ctrl.article.user.email}}, {{$ctrl.article.updated_at | date: 'MMM d, y h:mm a'}}</div>      
     </div>
     <div class="panel-footer">
       <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">More</button>
