@@ -12,6 +12,8 @@
     // };
 
     // $ctrl.$postLink = function() {
+    //   var content = $element.find('.trix-wrapper');
+    //   console.log(content[0].innerText);
     // };
 
     $ctrl.$doCheck = function() {
