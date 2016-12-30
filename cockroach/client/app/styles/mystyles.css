@@ -237,6 +237,14 @@ label[for="mycomment"] {
   display: block;
 }
 
+.trix-wrapper a {
+  color: #001dff;
+}
+
+.trix-wrapper a:visited {
+  color: magenta;
+}
+
 /*hide images from index page*/
 div.truncated img {
   display: none;
