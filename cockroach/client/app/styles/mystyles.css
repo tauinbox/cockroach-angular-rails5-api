@@ -237,6 +237,11 @@ label[for="mycomment"] {
   display: block;
 }
 
+/*hide images from index page*/
+div.truncated img {
+  display: none;
+}
+
 /*RESPONSIVE DESIGN*/
 
 @media (max-width: 1199px) {
