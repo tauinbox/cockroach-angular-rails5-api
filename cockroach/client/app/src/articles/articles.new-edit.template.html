@@ -23,7 +23,13 @@
       </div> <!-- panel-body -->
 
       <div class="panel-footer">
-        <button type="submit" form="articleform" class="btn btn-primary">{{artCtrl.buttonName}}</button>
+        <button ui-sref="app.articlesShow({ id: artCtrl.article.id })" class="btn btn-primary btn-sm">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>      
+        <!-- <button type="submit" form="articleform" class="btn btn-primary">{{artCtrl.buttonName}}</button> -->
+        <button type="submit" form="articleform" class="btn btn-primary pull-right">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        </button>
       </div>
 
     </div> <!-- panel -->

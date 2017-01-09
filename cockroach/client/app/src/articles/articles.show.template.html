@@ -11,9 +11,15 @@
       </div>
 
       <div class="panel-footer">
-        <button ui-sref="app.articles" class="btn btn-primary btn-sm">Back</button>
-        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ng-click="artCtrl.deleteArticle(artCtrl.article.id)" class="btn btn-primary btn-sm pull-right">Delete</button>        
-        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ui-sref="app.articlesEdit({ id: artCtrl.article.id })" class="btn btn-primary btn-sm pull-right">Edit</button>
+        <button ui-sref="app.articles" class="btn btn-primary btn-sm">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ng-click="artCtrl.deleteArticle(artCtrl.article.id)" class="btn btn-primary btn-sm pull-right">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>        
+        <button ng-if="artCtrl.article.user_id === artCtrl.current_user_id" ui-sref="app.articlesEdit({ id: artCtrl.article.id })" class="btn btn-primary btn-sm pull-right">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
       </div>    
     </div>
   </div>
