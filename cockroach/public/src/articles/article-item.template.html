@@ -11,10 +11,16 @@
         $ctrl.article.user.profile.lastname ? $ctrl.article.user.profile.lastname : $ctrl.article.user.email}}, {{$ctrl.article.updated_at | date: 'MMM d, y h:mm a'}}</div>      
     </div>
     <div class="panel-footer">
-      <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">More</button>
+      <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
       <span>{{$ctrl.article.num_of_comments}} comments</span>
-      <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ng-click="$ctrl.deleteItem($ctrl.article.id)" class="btn btn-primary btn-sm pull-right">Delete</button>
-      <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ui-sref="app.articlesEdit({ id: $ctrl.article.id })" class="btn btn-primary btn-sm pull-right">Edit</button>      
+      <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ng-click="$ctrl.deleteItem($ctrl.article.id)" class="btn btn-primary btn-sm pull-right">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      </button>
+      <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ui-sref="app.articlesEdit({ id: $ctrl.article.id })" class="btn btn-primary btn-sm pull-right">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </div>
