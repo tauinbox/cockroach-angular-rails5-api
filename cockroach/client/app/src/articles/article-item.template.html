@@ -14,7 +14,8 @@
       <button ui-sref="app.articlesShow({ id: $ctrl.article.id })" class="btn btn-primary btn-sm">
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </button>
-      <span>{{$ctrl.article.num_of_comments}} comments</span>
+      <span ng-if="$ctrl.article.num_of_comments == 1">{{$ctrl.article.num_of_comments}} comment</span>
+      <span ng-if="$ctrl.article.num_of_comments != 1">{{$ctrl.article.num_of_comments}} comments</span>
       <button ng-if="$ctrl.article.user_id === $ctrl.currentUserId" ng-click="$ctrl.deleteItem($ctrl.article.id)" class="btn btn-primary btn-sm pull-right">
         <i class="fa fa-trash-o" aria-hidden="true"></i>
       </button>
