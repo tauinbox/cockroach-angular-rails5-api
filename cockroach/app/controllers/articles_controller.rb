@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
 
     render json: @articles, include: {
       user: { only: :email, include: { profile: { only: [:nickname, :firstname, :lastname] } } }
-    }
+    }, methods: :num_of_comments
   end
 
   # GET /articles/1
