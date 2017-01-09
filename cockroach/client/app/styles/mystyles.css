@@ -255,6 +255,10 @@ div.truncated img {
   display: none;
 }
 
+div.panel-footer > span {
+  margin-left: 5px;
+}
+
 /*RESPONSIVE DESIGN*/
 
 @media (max-width: 1199px) {
